@@ -1,0 +1,8 @@
+"xset r off; xdotool keyup --window 0 h key --clearmodifiers --window 0 Left; xset r on"
+  Alt+h
+"xset r off; xdotool keyup --window 0 j key --clearmodifiers --window 0 Down; xset r on"
+  Alt+j
+"xset r off; xdotool keyup --window 0 k key --clearmodifiers --window 0 Up; xset r on"
+  Alt+k
+"xset r off; xdotool keyup --window 0 l key --clearmodifiers --window 0 Right; xset r on"
+  Alt+l

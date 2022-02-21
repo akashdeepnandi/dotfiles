@@ -1,0 +1,2 @@
+export GOROOT=$HOME/.local/go/
+export PATH=$PATH:$GOROOT/bin:$HOME/.local/bin/:$HOME/scripts
