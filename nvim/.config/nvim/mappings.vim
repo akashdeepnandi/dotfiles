@@ -7,6 +7,7 @@ nnoremap <leader>n <cmd>execute 'e '.system('date +"%Y%m%d%H%M%S.md"')<cr>
 nnoremap <leader>tn <cmd>tabnew<cr>
 nnoremap <leader>tc <cmd>tabclose<cr>
 " Telescope
+nnoremap <leader>lz <cmd>CreateZetLink<cr>
 nnoremap <leader>fc <cmd>Telescope find_files hidden=true cwd=/home/akash/.config<cr>
 nnoremap <leader>fn <cmd>Telescope find_files hidden=true cwd=/home/akash/notes<cr>
 nnoremap <leader>ff <cmd>Telescope find_files hidden=true<cr>

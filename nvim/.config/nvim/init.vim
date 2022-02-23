@@ -94,6 +94,8 @@ call plug#end()
 colorscheme gruvbox
 set background=dark
 
+command! CreateZetLink lua require'_notes'.create_note_link({ cwd = "/home/akash/notes" })
+
 source $HOME/.config/nvim/mappings.vim
 
 let g:limelight_conceal_ctermfg=234
@@ -209,3 +211,4 @@ require'nvim-treesitter.configs'.setup {
   },
 }
 EOF
+
