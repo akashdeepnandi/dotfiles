@@ -70,3 +70,6 @@ symbol = " "
 [swift]
 symbol = "ﯣ "
 
+
+[nodejs]
+disabled=true

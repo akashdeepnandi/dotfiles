@@ -37,5 +37,5 @@ stow *
 For setting up individual program, say alacritty
 
 ```
-stow alacritty
+stow -R alacritty
 ```
