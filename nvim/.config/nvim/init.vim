@@ -78,6 +78,7 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'hrsh7th/cmp-vsnip'
 Plug 'hrsh7th/vim-vsnip'
 Plug 'alvan/vim-closetag'
+Plug 'WhoIsSethDaniel/goldsmith.nvim'
 
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-commentary'
@@ -157,6 +158,23 @@ require('lualine').setup{
 }
 
 require'lspconfig'.tsserver.setup{}
+require'lspconfig'.gopls.setup{}
+
+  function OrgImports(wait_ms)
+    local params = vim.lsp.util.make_range_params()
+    params.context = {only = {"source.organizeImports"}}
+    local result = vim.lsp.buf_request_sync(0, "textDocument/codeAction", params, wait_ms)
+    for _, res in pairs(result or {}) do
+      for _, r in pairs(res.result or {}) do
+        if r.edit then
+          vim.lsp.util.apply_workspace_edit(r.edit)
+        else
+          vim.lsp.buf.execute_command(r.command)
+        end
+      end
+    end
+  end
+
  local cmp = require'cmp'
 
   cmp.setup({
@@ -212,3 +230,4 @@ require'nvim-treesitter.configs'.setup {
 }
 EOF
 
+autocmd BufWritePre *.go lua OrgImports(1000)
