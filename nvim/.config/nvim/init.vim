@@ -68,20 +68,20 @@ Plug 'zivyangll/git-blame.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 
-Plug 'neovim/nvim-lspconfig'
-Plug 'hrsh7th/cmp-nvim-lsp'
-Plug 'hrsh7th/cmp-buffer'
-Plug 'hrsh7th/cmp-path'
-Plug 'hrsh7th/cmp-cmdline'
-Plug 'hrsh7th/nvim-cmp'
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'hrsh7th/cmp-vsnip'
-Plug 'hrsh7th/vim-vsnip'
+" Plug 'neovim/nvim-lspconfig'
+" Plug 'hrsh7th/cmp-nvim-lsp'
+" Plug 'hrsh7th/cmp-buffer'
+" Plug 'hrsh7th/cmp-path'
+" Plug 'hrsh7th/cmp-cmdline'
+" Plug 'hrsh7th/nvim-cmp'
+" Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+" Plug 'hrsh7th/cmp-vsnip'
+" Plug 'hrsh7th/vim-vsnip'
 Plug 'alvan/vim-closetag'
-Plug 'WhoIsSethDaniel/goldsmith.nvim'
 
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-surround'
 
 Plug 'godlygeek/tabular'
 Plug 'vim-pandoc/vim-pandoc'
@@ -105,7 +105,7 @@ let g:limelight_conceal_ctermfg=234
 lua << EOF
 require('telescope').setup{
   defaults = { 
-    file_ignore_patterns = {"**/node_modules", ".git"},
+    file_ignore_patterns = {"**/node_modules", ".git", "node_modules"},
     vimgrep_arguments = {
       "rg",
       "--color=never",
@@ -157,77 +157,77 @@ require('lualine').setup{
   },
 }
 
-require'lspconfig'.tsserver.setup{}
-require'lspconfig'.gopls.setup{}
+-- require'lspconfig'.tsserver.setup{}
+-- require'lspconfig'.gopls.setup{}
 
-  function OrgImports(wait_ms)
-    local params = vim.lsp.util.make_range_params()
-    params.context = {only = {"source.organizeImports"}}
-    local result = vim.lsp.buf_request_sync(0, "textDocument/codeAction", params, wait_ms)
-    for _, res in pairs(result or {}) do
-      for _, r in pairs(res.result or {}) do
-        if r.edit then
-          vim.lsp.util.apply_workspace_edit(r.edit)
-        else
-          vim.lsp.buf.execute_command(r.command)
-        end
-      end
-    end
-  end
+--   function OrgImports(wait_ms)
+--     local params = vim.lsp.util.make_range_params()
+--     params.context = {only = {"source.organizeImports"}}
+--     local result = vim.lsp.buf_request_sync(0, "textDocument/codeAction", params, wait_ms)
+--     for _, res in pairs(result or {}) do
+--       for _, r in pairs(res.result or {}) do
+--         if r.edit then
+--           vim.lsp.util.apply_workspace_edit(r.edit)
+--         else
+--           vim.lsp.buf.execute_command(r.command)
+--         end
+--       end
+--     end
+--   end
 
- local cmp = require'cmp'
+--  local cmp = require'cmp'
 
-  cmp.setup({
-    snippet = {
-      expand = function(args)
-        vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
-      end,
-    },
-    mapping = {
-      ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
-      ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
-      ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
-      ['<C-y>'] = cmp.config.disable,
-      ['<C-e>'] = cmp.mapping({
-        i = cmp.mapping.abort(),
-        c = cmp.mapping.close(),
-      }),
-      ['<CR>'] = cmp.mapping.confirm({ select = true }), 
-    },
-    sources = cmp.config.sources({
-      { name = 'nvim_lsp' },
-      { name = 'vsnip' },
-    }, {
-      { name = 'buffer' },
-    })
-  })
-  cmp.setup.cmdline('/', {
-    sources = {
-      { name = 'buffer' }
-    }
-  })
+--   cmp.setup({
+--     snippet = {
+--       expand = function(args)
+--         vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+--       end,
+--     },
+--     mapping = {
+--       ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
+--       ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
+--       ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
+--       ['<C-y>'] = cmp.config.disable,
+--       ['<C-e>'] = cmp.mapping({
+--         i = cmp.mapping.abort(),
+--         c = cmp.mapping.close(),
+--       }),
+--       ['<CR>'] = cmp.mapping.confirm({ select = true }), 
+--     },
+--     sources = cmp.config.sources({
+--       { name = 'nvim_lsp' },
+--       { name = 'vsnip' },
+--     }, {
+--       { name = 'buffer' },
+--     })
+--   })
+--   cmp.setup.cmdline('/', {
+--     sources = {
+--       { name = 'buffer' }
+--     }
+--   })
 
-  cmp.setup.cmdline(':', {
-    sources = cmp.config.sources({
-      { name = 'path' }
-    }, {
-      { name = 'cmdline' }
-    })
-  })
+--   cmp.setup.cmdline(':', {
+--     sources = cmp.config.sources({
+--       { name = 'path' }
+--     }, {
+--       { name = 'cmdline' }
+--     })
+--   })
 
-  local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
-  require('lspconfig').tsserver.setup {
-    capabilities = capabilities
-  }
-require'nvim-treesitter.configs'.setup {
-  ensure_installed = "maintained",
-  sync_install = false,
-  highlight = {
-    enable = true,
-    disable = { "c", "rust" },
-    additional_vim_regex_highlighting = false,
-  },
-}
+--   local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+--   require('lspconfig').tsserver.setup {
+--     capabilities = capabilities
+--   }
+-- require'nvim-treesitter.configs'.setup {
+--   ensure_installed = "maintained",
+--   sync_install = false,
+--   highlight = {
+--     enable = true,
+--     disable = { "c", "rust" },
+--     additional_vim_regex_highlighting = false,
+--   },
+-- }
 EOF
 
 autocmd BufWritePre *.go lua OrgImports(1000)
