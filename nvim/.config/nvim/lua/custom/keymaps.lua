@@ -43,9 +43,11 @@ nmap("<C-k>", "<cmd>m -2<CR>")
 nmap("<C-j>", "<cmd>m +1<cr>")
 
 
-map("v", "<", "<gv", opts)
-map("v", ">", ">gv", opts)
+map("v", "<", "<gv")
+map("v", ">", ">gv")
 
+nmap("<leader>ss", ":<C-u>SessionSave<CR>")
+nmap("<leader>sl", ":<C-u>SessionLoad<CR>")
 
 --  Goyo and limelight
 -- <Leader>L <Plug>(Limelight)

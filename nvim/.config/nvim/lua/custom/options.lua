@@ -40,10 +40,9 @@ local options_map = {
   wrap = false,
   background = "dark",
   termguicolors = true,
-  nowrap = true,
+  wrap = false,
   swapfile = false,
   backup = false,
-  undodir = "~/.nvim/undodir",
   undofile = true,
 }
 

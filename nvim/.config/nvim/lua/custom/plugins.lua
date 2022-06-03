@@ -11,7 +11,6 @@ return require('packer').startup(function(use)
   use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim
 
   use 'nvim-lualine/lualine.nvim'
-  use 'kyazdani42/nvim-web-devicons'
   use 'ryanoasis/vim-devicons'
   use "kyazdani42/nvim-tree.lua"
   use 'kyazdani42/nvim-web-devicons'
@@ -42,6 +41,7 @@ return require('packer').startup(function(use)
 
   use "L3MON4D3/LuaSnip" --snippet engine
   use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
+  use "glepnir/dashboard-nvim" -- a bunch of snippets to use
 
   -- Only for json
   use {
@@ -67,4 +67,3 @@ return require('packer').startup(function(use)
 
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
 end)
-

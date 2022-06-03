@@ -75,10 +75,10 @@ window:
   #class:
     # Application instance name
     #instance: Alacritty
-    # General application class
     #general: Alacritty
 
   # GTK theme variant (Linux/BSD only)
+    # General application class
   #
   # Override the variant of the GTK theme. Commonly supported values are `dark`
   # and `light`. Set this to `None` to use the default theme variant.
@@ -93,6 +93,7 @@ window:
   #multiplier: 3
 
 # Font configuration
+# Using this Font: https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/CascadiaCode.zip
 font:
   # Normal (roman) font face
   normal:
@@ -102,7 +103,7 @@ font:
     #   - (macOS) Menlo
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
-    family: FiraCode
+    family: CaskaydiaCove Nerd Font
 
     # The `style` can be specified to pick a specific face.
     style: Regular
@@ -113,7 +114,7 @@ font:
     #
     # If the bold family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: FiraCode
+    family: CaskaydiaCove Nerd Font
 
     # The `style` can be specified to pick a specific face.
     style: Bold
@@ -124,7 +125,7 @@ font:
     #
     # If the italic family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: FiraCode
+    family: CaskaydiaCove Nerd Font
 
     # The `style` can be specified to pick a specific face.
     style: Italic
@@ -135,7 +136,7 @@ font:
     #
     # If the bold italic family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: FiraCode
+    family: CaskaydiaCove Nerd Font
 
     # The `style` can be specified to pick a specific face.
     style: Bold Italic
