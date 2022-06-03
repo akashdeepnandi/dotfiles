@@ -40,6 +40,11 @@ local options_map = {
   wrap = false,
   background = "dark",
   termguicolors = true,
+  nowrap = true,
+  swapfile = false,
+  backup = false,
+  undodir = "~/.nvim/undodir",
+  undofile = true,
 }
 
 for k, v in pairs(options_map) do
