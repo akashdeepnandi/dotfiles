@@ -5,7 +5,22 @@ end
 
 local lspconfig = require("lspconfig")
 
-local servers = { "jsonls", "sumneko_lua", "tsserver" }
+local servers = {
+  "jsonls",
+  "sumneko_lua",
+  "tsserver",
+  "dockerls",
+  "elixirls",
+  "gopls",
+  "bashls",
+  "html",
+  "pyright",
+  "solidity_ls",
+  "svelte",
+  "tailwindcss",
+  "vuels",
+  "yamlls",
+}
 
 lsp_installer.setup {
   ensure_installed = servers
@@ -22,4 +37,3 @@ for _, server in pairs(servers) do
   end
   lspconfig[server].setup(opts)
 end
-
