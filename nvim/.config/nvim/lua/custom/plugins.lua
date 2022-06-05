@@ -48,21 +48,9 @@ return require('packer').startup(function(use)
     'elzr/vim-json',
     ft = { 'json', },
   }
-  -- Only for markdown
-  use {
-    'vim-pandoc/vim-pandoc',
-    ft = { 'md', },
-  }
-
-  use {
-    'vim-pandoc/vim-pandoc-syntax',
-    ft = { 'md', },
-  }
-
-  use {
-    'SidOfc/mkdx',
-    ft = { 'md', },
-  }
+  use 'vim-pandoc/vim-pandoc'
+  use 'vim-pandoc/vim-pandoc-syntax'
+  use 'SidOfc/mkdx'
   -- Only for markdown
 
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
