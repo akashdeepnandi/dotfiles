@@ -1,3 +1,5 @@
+HOME = os.getenv("HOME")
+
 function map(mode, shortcut, command)
   vim.api.nvim_set_keymap(mode, shortcut, command, { noremap = true, silent = true })
 end
@@ -21,8 +23,8 @@ nmap("<leader>e", "<cmd>NvimTreeToggle<cr>")
 nmap("<leader>tn", "<cmd>tabnew<cr>")
 nmap("<leader>tc", "<cmd>tabclose<cr>")
 -- Telescope
-nmap("<leader>fc", "<cmd>Telescope find_files hidden=true cwd=/home/akash/dotfiles<cr>")
-nmap("<leader>fn", "<cmd>Telescope find_files hidden=true cwd=/home/akash/notes<cr>")
+nmap("<leader>fc", "<cmd>Telescope find_files hidden=true cwd="..HOME.."/dotfiles<cr>")
+nmap("<leader>fn", "<cmd>Telescope find_files hidden=true cwd="..HOME.."/notes<cr>")
 nmap("<leader>ff", "<cmd>Telescope find_files hidden=true<cr>")
 nmap("<leader>fg", "<cmd>Telescope live_grep<cr>")
 nmap("<leader>fb", "<cmd>Telescope buffers<cr>")

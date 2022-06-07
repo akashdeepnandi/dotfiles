@@ -104,6 +104,8 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
-eval "$(starship init bash)"
+if ! command -v starship &> /dev/null
+then
+  eval "$(starship init bash)"
+fi
 
-fortune | cowsay | lolcat
