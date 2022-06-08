@@ -26,6 +26,7 @@ fi
 
 
 source ~/aliases
+[ -s "$HOME/secrets" ] && source $HOME/secrets
 # source ~/secrets
 source ~/paths
 

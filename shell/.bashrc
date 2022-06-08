@@ -92,7 +92,7 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 
 source ~/aliases
-source ~/secrets
+[ -s "$HOME/secrets" ] && source $HOME/secrets
 source ~/paths
 
 set -o vi
@@ -104,8 +104,16 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
-if ! command -v starship &> /dev/null
-then
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+
+# if ! command -v starship &> /dev/null
+# then
+# fi
+if which starship >/dev/null; then
   eval "$(starship init bash)"
 fi
+
 

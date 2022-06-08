@@ -51,6 +51,8 @@ map("v", ">", ">gv")
 nmap("<leader>ss", ":<C-u>SessionSave<CR>")
 nmap("<leader>sl", ":<C-u>SessionLoad<CR>")
 
+nmap("<leader>gp", "<cmd>Gitsigns prev_hunk<cr>")
+nmap("<leader>gn", "<cmd>Gitsigns next_hunk<cr>")
 --  Goyo and limelight
 -- <Leader>L <Plug>(Limelight)
 -- <Leader>L <Plug>(Limelight)
