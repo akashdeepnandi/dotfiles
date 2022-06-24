@@ -10,7 +10,7 @@ local themes_path = gfs.get_themes_dir()
 
 local theme = {}
 
-theme.font = "Fira Code Bold 9"
+theme.font = "Hasklug Nerd Font regular 10"
 
 theme.bg_normal = "#2e3440"
 theme.bg_focus = "#676773"
@@ -23,8 +23,8 @@ theme.fg_focus = "#eceff4"
 theme.fg_urgent = "#ffffff"
 theme.fg_minimize = "#ffffff"
 
-theme.useless_gap = dpi(5)
-theme.border_width = dpi(3)
+theme.useless_gap = dpi(9)
+theme.border_width = dpi(0)
 theme.border_focus = "#cecece"
 theme.border_normal = "#7d80a1"
 theme.border_marked = "#91231c"
@@ -92,7 +92,7 @@ theme.titlebar_maximized_button_focus_inactive = themes_path .. "default/titleba
 theme.titlebar_maximized_button_normal_active = themes_path .. "default/titlebar/maximized_normal_active.png"
 theme.titlebar_maximized_button_focus_active = themes_path .. "default/titlebar/maximized_focus_active.png"
 
-theme.wallpaper = "/home/akash/.config/awesome/nord.jpg"
+theme.wallpaper = "/home/akash/.config/awesome/nord-abstract.png"
 
 -- You can use your own layout icons like this:
 theme.layout_fairh = themes_path .. "default/layouts/fairhw.png"

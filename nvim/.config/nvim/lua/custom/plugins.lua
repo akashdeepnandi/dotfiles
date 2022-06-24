@@ -1,6 +1,8 @@
 return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
   use "morhetz/gruvbox"
+  use "whatyouhide/vim-gotham"
+  use 'folke/tokyonight.nvim'
 
   use 'nvim-lua/plenary.nvim'
   use 'nvim-telescope/telescope.nvim'
@@ -18,6 +20,9 @@ return require('packer').startup(function(use)
   use 'zivyangll/git-blame.vim'
   use 'tpope/vim-fugitive'
   use "lewis6991/gitsigns.nvim"
+  use 'akinsho/git-conflict.nvim'
+  use 'TimUntersberger/neogit'
+  use 'voldikss/vim-floaterm'
 
   use "windwp/nvim-autopairs" -- Autopairs, integrates with both cmp and treesitter
   use "numToStr/Comment.nvim" -- Easily comment stuff

@@ -37,13 +37,13 @@ local options_map = {
   updatetime = 500,
   sidescrolloff = 8,
   syntax = "on",
-  wrap = false,
   background = "dark",
   termguicolors = true,
   wrap = false,
   swapfile = false,
   backup = false,
   undofile = true,
+  wildmenu = true,
 }
 
 for k, v in pairs(options_map) do
@@ -65,4 +65,8 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
   end
 })
 
-vim.cmd("colorscheme gruvbox")
+-- vim.cmd("colorscheme gruvbox")
+-- vim.g.tokyonight_style = "night"
+-- vim.cmd[[colorscheme tokyonight]]
+vim.cmd[[colorscheme gruvbox]]
+vim.cmd[[highlight Normal guibg=none]]

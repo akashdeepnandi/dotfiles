@@ -1,0 +1,14 @@
+[user]
+	name = Akashdeep Nandi
+	email = adncorwin@gmail.com
+[alias]
+  co = checkout
+  ci = commit
+  st = status
+  br = branch
+  rb = rebase
+  cp = cherry-pick
+  lo = log --oneline
+  ls = log
+[init]
+	defaultBranch = main
