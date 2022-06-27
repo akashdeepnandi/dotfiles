@@ -1,8 +1,7 @@
 return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
   use "morhetz/gruvbox"
-  use "whatyouhide/vim-gotham"
-  use 'folke/tokyonight.nvim'
+  use 'shaunsingh/nord.nvim'
 
   use 'nvim-lua/plenary.nvim'
   use 'nvim-telescope/telescope.nvim'

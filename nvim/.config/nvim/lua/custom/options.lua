@@ -67,6 +67,6 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 
 -- vim.cmd("colorscheme gruvbox")
 -- vim.g.tokyonight_style = "night"
--- vim.cmd[[colorscheme tokyonight]]
-vim.cmd[[colorscheme gruvbox]]
+vim.cmd[[colorscheme nord]]
+-- vim.cmd[[colorscheme gruvbox]]
 vim.cmd[[highlight Normal guibg=none]]

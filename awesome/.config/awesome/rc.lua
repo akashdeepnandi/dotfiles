@@ -711,6 +711,22 @@ client.connect_signal("request::titlebars", function(c)
   }
 end)
 
+local function set_client_style(c)
+    if c.floating or c.maximized or c.fullscreen then
+      c.border_width = 0
+      c.shape = gears.shape.rectangle
+    else
+      c.border_width = 3
+      c.shape = function(cr,w,h)
+        gears.shape.rounded_rect(cr,w,h,15)
+      end
+    end
+end
+
+client.connect_signal("property::fullscreen", set_client_style)
+
+client.connect_signal("property::maximized", set_client_style)
+
 -- Enable sloppy focus, so that focus follows mouse.
 client.connect_signal("mouse::enter", function(c)
   c:emit_signal("request::activate", "mouse_enter", {
@@ -720,9 +736,12 @@ end)
 
 client.connect_signal("focus", function(c)
   c.border_color = beautiful.border_focus
+  set_client_style(c)
 end)
+
 client.connect_signal("unfocus", function(c)
   c.border_color = beautiful.border_normal
+  c.border_width = 0
 end)
 -- }}}
 client.connect_signal("manage", function (c)

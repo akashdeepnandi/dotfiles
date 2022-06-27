@@ -12,22 +12,38 @@ local theme = {}
 
 theme.font = "Hasklug Nerd Font regular 10"
 
-theme.bg_normal = "#2e3440"
-theme.bg_focus = "#676773"
-theme.bg_urgent = "#f26f66"
-theme.bg_minimize = "#444444"
+theme.fg_normal  = "#ECEFF4"
+theme.fg_focus   = "#88C0D0"
+theme.fg_urgent  = "#D08770"
+theme.bg_normal  = "#2E3440"
+theme.bg_focus   = "#3B4252"
+theme.bg_urgent  = "#3B4252"
 theme.bg_systray = theme.bg_normal
 
-theme.fg_normal = "#d8dee9"
-theme.fg_focus = "#eceff4"
-theme.fg_urgent = "#ffffff"
-theme.fg_minimize = "#ffffff"
+-- theme.bg_normal = "#2e3440"
+-- theme.bg_focus = "#676773"
+-- theme.bg_urgent = "#f26f66"
+-- theme.bg_minimize = "#444444"
+-- theme.bg_systray = theme.bg_normal
+
+-- theme.fg_normal = "#d8dee9"
+-- theme.fg_focus = "#eceff4"
+-- theme.fg_urgent = "#ffffff"
+-- theme.fg_minimize = "#ffffff"
 
 theme.useless_gap = dpi(9)
-theme.border_width = dpi(0)
-theme.border_focus = "#cecece"
-theme.border_normal = "#7d80a1"
-theme.border_marked = "#91231c"
+theme.border_width = dpi(3)
+-- theme.border_focus = "#cecece"
+-- theme.border_normal = "#7d80a1"
+-- theme.border_marked = "#91231c"
+theme.border_normal = "#3B4252"
+theme.border_focus  = "#4C566A"
+theme.border_marked = "#D08770"
+
+-- {{{ Titlebars
+theme.titlebar_bg_focus   = "#3B4252"
+theme.titlebar_bg_normal  = "#2E3440"
+-- }}}
 
 -- There are other variable sets
 -- overriding the default one when
@@ -118,6 +134,15 @@ theme.awesome_icon = theme_assets.awesome_icon(theme.menu_height, theme.bg_focus
 -- Define the icon theme for application icons. If not set then the icons
 -- from /usr/share/icons and /usr/share/icons/hicolor will be used.
 theme.icon_theme = nil
+
+-- {{{ batteryarc_widget
+theme.widget_main_color = "#88C0D0"
+theme.widget_red = "#BF616A"
+theme.widget_yellow = "#EBCB8B"
+theme.widget_green = "#A3BE8C"
+theme.widget_black = "#000000"
+theme.widget_transparent = "#00000000"
+-- }}}
 
 return theme
 
