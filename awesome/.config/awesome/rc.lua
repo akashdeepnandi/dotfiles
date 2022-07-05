@@ -741,7 +741,7 @@ end)
 
 client.connect_signal("unfocus", function(c)
   c.border_color = beautiful.border_normal
-  c.border_width = 0
+  -- c.border_width = 0
 end)
 -- }}}
 client.connect_signal("manage", function (c)

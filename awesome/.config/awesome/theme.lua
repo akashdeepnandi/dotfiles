@@ -10,7 +10,8 @@ local themes_path = gfs.get_themes_dir()
 
 local theme = {}
 
-theme.font = "Hasklug Nerd Font regular 10"
+-- theme.font = "Hasklug Nerd Font regular 10"
+theme.font = "Fira Code regular 10"
 
 theme.fg_normal  = "#ECEFF4"
 theme.fg_focus   = "#88C0D0"
@@ -36,7 +37,9 @@ theme.border_width = dpi(3)
 -- theme.border_focus = "#cecece"
 -- theme.border_normal = "#7d80a1"
 -- theme.border_marked = "#91231c"
-theme.border_normal = "#3B4252"
+-- cecece00
+-- theme.border_normal = "#cecece00"
+theme.border_normal = "#00000000"
 theme.border_focus  = "#4C566A"
 theme.border_marked = "#D08770"
 

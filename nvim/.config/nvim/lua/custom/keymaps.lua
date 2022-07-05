@@ -20,8 +20,26 @@ nmap("<leader>ff", "<cmd>Git blame<cr>")
 -- nnoremap <leader>n <cmd>execute 'e '.system('date +"%Y%m%d%H%M%S.md"')<cr>
 --
 nmap("<leader>e", "<cmd>NvimTreeToggle<cr>")
+nmap("<leader>a", "<C-a>")
+nmap("<leader>x", "<C-x>")
+
+
+--Tabs
 nmap("<leader>tn", "<cmd>tabnew<cr>")
 nmap("<leader>tc", "<cmd>tabclose<cr>")
+nmap("<leader>to", "<cmd>tabonly<cr>")
+nmap("<leader>1", "1gt")
+nmap("<leader>2", "2gt")
+nmap("<leader>3", "3gt")
+nmap("<leader>4", "4gt")
+nmap("<leader>5", "5gt")
+nmap("<leader>6", "6gt")
+nmap("<leader>7", "7gt")
+nmap("<leader>8", "8gt")
+nmap("<leader>9", "9gt")
+nmap("<leader>0", "0gt")
+nmap("gy", "gT")
+
 -- Telescope
 nmap("<leader>fc", "<cmd>Telescope find_files hidden=true cwd="..HOME.."/dotfiles<cr>")
 nmap("<leader>fs", "<cmd>Telescope find_files hidden=true cwd="..HOME.."/scripts<cr>")
