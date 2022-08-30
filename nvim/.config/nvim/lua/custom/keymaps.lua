@@ -79,6 +79,9 @@ nmap("gu", "<cmd>Gitsigns reset_hunk<cr>")
 nmap("gp", "<cmd>Gitsigns preview_hunk<cr>")
 nmap("gx", "<cmd>Gitsigns diffthis<cr>")
 nmap("gs", "<cmd>Git log<cr>")
+
+
+nmap("<leader>C", ":Calendar<cr>")
 -- nmap("<leader>gn", "<cmd>Gitsigns next_hunk<cr>")
 -- nmap("<leader>gn", "<cmd>Gitsigns next_hunk<cr>")
 -- blame_line

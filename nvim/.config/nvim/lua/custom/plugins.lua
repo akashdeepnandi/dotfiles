@@ -15,6 +15,7 @@ return require('packer').startup(function(use)
   use 'ryanoasis/vim-devicons'
   use "kyazdani42/nvim-tree.lua"
   use 'kyazdani42/nvim-web-devicons'
+  use 'itchyny/calendar.vim'
 
   use 'zivyangll/git-blame.vim'
   use 'tpope/vim-fugitive'
@@ -22,6 +23,7 @@ return require('packer').startup(function(use)
   use 'akinsho/git-conflict.nvim'
   use 'TimUntersberger/neogit'
   use 'voldikss/vim-floaterm'
+  use 'tveskag/nvim-blame-line'
 
   use "windwp/nvim-autopairs" -- Autopairs, integrates with both cmp and treesitter
   use "numToStr/Comment.nvim" -- Easily comment stuff
@@ -35,6 +37,8 @@ return require('packer').startup(function(use)
   use "saadparwaiz1/cmp_luasnip" -- snippet completions
   use "hrsh7th/cmp-nvim-lsp"
   use "hrsh7th/cmp-nvim-lua"
+  use 'ray-x/go.nvim'
+  use 'ray-x/guihua.lua'
 
   use "neovim/nvim-lspconfig" -- enable LSP
   use "williamboman/nvim-lsp-installer" -- simple to use language server installer
