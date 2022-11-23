@@ -190,7 +190,7 @@ screen.connect_signal("property::geometry", set_wallpaper)
 awful.screen.connect_for_each_screen(function(s)
   -- Wallpaper
   set_wallpaper(s)
-  local names = { "WWW", "NOTE", "CODE", "TERM", "VID", "MAIL", "MIS1", "MIS2" }
+  local names = { "WWW", "NOTE", "CODE", "CHAT", "VID", "MAIL", "MIS1", "MIS2" }
   -- Each screen has its own tag table.
   awful.tag(names, s, awful.layout.layouts[1])
 
@@ -452,7 +452,7 @@ end, {
     description = "Files",
     group = "Apps"
   }), awful.key({ modkey }, "e", function()
-    awful.util.spawn("mailspring")
+    awful.util.spawn("thunderbird")
   end, {
     description = "Browser",
     group = "Apps"
@@ -750,7 +750,8 @@ end)
 awful.util.spawn("picom")
 awful.util.spawn("nm-applet")
 awful.util.spawn("flameshot")
-awful.util.spawn("mailspring --background")
+-- awful.util.spawn("mailspring --background")
+awful.util.spawn("thunderbird")
 awful.util.spawn("xbindkeys")
 awful.util.spawn("mega-whoami")
 -- awful.util.spawn("xmodmap ~/.Xmodmap")

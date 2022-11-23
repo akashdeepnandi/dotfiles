@@ -20,6 +20,8 @@ local servers = {
   "tailwindcss",
   "vuels",
   "yamlls",
+  "astro",
+  "prismals",
 }
 
 lsp_installer.setup {

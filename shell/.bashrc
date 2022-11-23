@@ -1,7 +1,7 @@
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
-
+export EDITOR="nvim"
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
@@ -112,8 +112,6 @@ export NVM_DIR="$HOME/.nvm"
 # if ! command -v starship &> /dev/null
 # then
 # fi
-if which starship >/dev/null; then
-  eval "$(starship init bash)"
-fi
-
-
+# if which starship >/dev/null; then
+#   eval "$(starship init bash)"
+# fi
