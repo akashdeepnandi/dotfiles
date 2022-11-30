@@ -230,6 +230,9 @@ awful.screen.connect_for_each_screen(function(s)
     opacity = 0.7
   })
 
+
+  local space = wibox.widget.textbox(" ")
+
   -- Add widgets to the wibox
   s.mywibox:setup {
     layout = wibox.layout.align.horizontal,
@@ -242,16 +245,21 @@ awful.screen.connect_for_each_screen(function(s)
     s.mytasklist, -- Middle widget
     { -- Right widgets
       layout = wibox.layout.fixed.horizontal,
-      mykeyboardlayout,
       wibox.widget.systray(),
+      space,
       volume_widget {
         widget_type = 'icon_and_text'
       },
+      space,
       brightness_widget {
         type = 'icon_and_text',
-        program = 'light',
-        step = 2
+        program = 'brightnessctl',
+        step = 2,
+        tooltip = false,
+        percentage = true,
+        base = 55,
       },
+      space,
       battery_widget {
         show_current_level = true
       },
@@ -272,12 +280,12 @@ root.buttons(gears.table.join(
 
 -- {{{ Key bindings
 globalkeys = gears.table.join(awful.key({ modkey }, "]", function()
-  awful.spawn("light -A 10")
+  awful.spawn("brightnessctl s +10% -q")
 end, {
   description = "increase brightness",
   group = "Media"
 }), awful.key({ modkey }, "[", function()
-  awful.spawn("light -U 10")
+  awful.spawn("brightnessctl s 10%- -q")
 end, {
   description = "decrease brightness",
   group = "Media"
@@ -373,6 +381,11 @@ end, {
   end, {
     description = "open a terminal",
     group = "launcher"
+  }), awful.key({ modkey, "Shift" }, "b", function()
+    awful.spawn(terminal)
+  end, {
+    description = "open a terminal",
+    group = "launcher"
   }), awful.key({ modkey, "Control" }, "r", awesome.restart, {
     description = "reload awesome",
     group = "awesome"
@@ -437,7 +450,7 @@ end, {
     description = "App Launcher",
     group = "Apps"
   }), awful.key({ modkey }, "n", function()
-    awful.util.spawn("notion-snap")
+    awful.util.spawn("obsidian")
   end, {
     description = "App Launcher",
     group = "Apps"
@@ -468,7 +481,7 @@ end, {
     group = "awesome"
   }), -- Menubar
   awful.key({ modkey }, "p", function()
-    menubar.show()
+    awful.util.spawn("flameshot gui")
   end, {
     description = "show the menubar",
     group = "launcher"
@@ -624,7 +637,9 @@ awful.rules.rules = { -- All clients will match this rule.
         "pinentry" },
       class = { "Arandr", "Blueman-manager", "Gpick", "Kruler", "MessageWin", -- kalarm.
         "Sxiv", "Tor Browser", -- Needs a fixed window size to avoid fingerprinting by screen size.
-        "Wpa_gui", "veromix", "xtightvncviewer" },
+        "Wpa_gui", "veromix", "xtightvncviewer",
+        "MEGAsync"
+      },
 
       -- Note that the name property shown in xprop might be set slightly after creation of the client
       -- and the name shown there might not match defined rules here.
@@ -711,9 +726,9 @@ local function set_client_style(c)
       c.border_width = 0
       c.shape = gears.shape.rectangle
     else
-      c.border_width = 3
+      c.border_width = 2
       c.shape = function(cr,w,h)
-        gears.shape.rounded_rect(cr,w,h,15)
+        gears.shape.rounded_rect(cr,w,h,10)
       end
     end
 end
@@ -745,13 +760,27 @@ client.connect_signal("manage", function (c)
   end
 end)
 
+local autostart_apps = {
+  "picom",
+  "nm-applet",
+  "flameshot",
+  "xbindkeys",
+  "mega-whoami",
+  "blueman-applet",
+  "thunderbird",
+  os.getenv("HOME").."/.local/bin/Bitwarden-2022.10.1-x86_64.AppImage",
+  "slack -u",
+  "megasync",
+}
+
+for _, cmd in pairs(autostart_apps) do
+  awful.util.spawn(cmd)
+end
 
 -- Autostart apps
-awful.util.spawn("picom")
-awful.util.spawn("nm-applet")
-awful.util.spawn("flameshot")
--- awful.util.spawn("mailspring --background")
-awful.util.spawn("thunderbird")
-awful.util.spawn("xbindkeys")
-awful.util.spawn("mega-whoami")
--- awful.util.spawn("xmodmap ~/.Xmodmap")
+--[[ awful.util.spawn("nm-applet") ]]
+--[[ awful.util.spawn("flameshot") ]]
+--[[ -- awful.util.spawn("mailspring --background") ]]
+--[[ awful.util.spawn("thunderbird") ]]
+--[[ awful.util.spawn("xbindkeys") ]]
+--[[ awful.util.spawn("mega-whoami") ]]

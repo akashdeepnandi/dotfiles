@@ -115,3 +115,5 @@ export NVM_DIR="$HOME/.nvm"
 # if which starship >/dev/null; then
 #   eval "$(starship init bash)"
 # fi
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

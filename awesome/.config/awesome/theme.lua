@@ -10,8 +10,8 @@ local themes_path = gfs.get_themes_dir()
 
 local theme = {}
 
--- theme.font = "Hasklug Nerd Font regular 10"
-theme.font = "Fira Code regular 9"
+theme.font = "Hasklug Nerd Font regular 10"
+--[[ theme.font = "Fira Code regular 9" ]]
 
 theme.fg_normal  = "#ECEFF4"
 theme.fg_focus   = "#88C0D0"
@@ -20,6 +20,7 @@ theme.bg_normal  = "#2E3440"
 theme.bg_focus   = "#3B4252"
 theme.bg_urgent  = "#3B4252"
 theme.bg_systray = theme.bg_normal
+theme.systray_icon_spacing = dpi(10)
 
 -- theme.bg_normal = "#2e3440"
 -- theme.bg_focus = "#676773"

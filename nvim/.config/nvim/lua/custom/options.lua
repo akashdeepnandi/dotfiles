@@ -44,6 +44,7 @@ local options_map = {
   backup = false,
   undofile = true,
   wildmenu = true,
+  mouse = "",
 }
 
 for k, v in pairs(options_map) do

@@ -28,13 +28,23 @@ fi
 
 source ~/aliases
 [ -s "$HOME/secrets" ] && source $HOME/secrets
-# source ~/secrets
 source ~/paths
 
-eval "$(starship init zsh)"
-
-if ! command -v starship &> /dev/null
+export PATH="$HOME/.rbenv/bin:$PATH"
+if  type rbenv &> /dev/null
 then
-  eval "$(starship init zsh)"
+  eval "$(rbenv init -)"
 fi
 
+# fpath+=($HOME/.zsh/pure)
+# autoload -U promptinit; promptinit
+# prompt pure
+
+if type starship &> /dev/null
+then
+  eval "$(starship init zsh)"
+
+fi
+
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

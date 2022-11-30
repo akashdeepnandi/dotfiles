@@ -1,2 +1,3 @@
 eval `luarocks path --bin` &
 ulauncher &
+$HOME/.screenlayout/awesome.sh
