@@ -382,9 +382,9 @@ end, {
     description = "open a terminal",
     group = "launcher"
   }), awful.key({ modkey, "Shift" }, "b", function()
-    awful.spawn(terminal)
+    awful.spawn(os.getenv("HOME").."/.local/bin/Bitwarden-2022.10.1-x86_64.AppImage")
   end, {
-    description = "open a terminal",
+    description = "open Bitwarden",
     group = "launcher"
   }), awful.key({ modkey, "Control" }, "r", awesome.restart, {
     description = "reload awesome",
@@ -465,14 +465,14 @@ end, {
     description = "Files",
     group = "Apps"
   }), awful.key({ modkey }, "e", function()
-    awful.util.spawn("thunderbird")
+    awful.util.spawn("bluemail")
   end, {
     description = "Browser",
     group = "Apps"
   }),  awful.key({ modkey }, "b", function()
-    awful.util.spawn("firefox")
+    awful.util.spawn("brave-browser")
   end, {
-    description = "Browser",
+    description = "Settings",
     group = "Apps"
   }), awful.key({ modkey }, "x", function()
     awful.util.spawn("gnome-control-center")
@@ -767,10 +767,11 @@ local autostart_apps = {
   "xbindkeys",
   "mega-whoami",
   "blueman-applet",
-  "thunderbird",
+  "bluemail",
   os.getenv("HOME").."/.local/bin/Bitwarden-2022.10.1-x86_64.AppImage",
   "slack -u",
   "megasync",
+  "breaktimer",
 }
 
 for _, cmd in pairs(autostart_apps) do

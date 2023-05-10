@@ -47,7 +47,7 @@ nmap("<leader>fn", "<cmd>Telescope find_files hidden=true cwd="..HOME.."/notes<c
 nmap("<leader>ff", "<cmd>Telescope find_files hidden=true<cr>")
 nmap("<leader>fg", "<cmd>Telescope live_grep<cr>")
 nmap("<leader>fb", "<cmd>Telescope buffers<cr>")
-nmap("<leader>fd", "<cmd>lua vim.lsp.buf.formatting_sync()<cr>")
+nmap("<leader>fd", "<cmd>lua vim.lsp.buf.format()<cr>")
 nmap("<leader>fh", "<cmd>Telescope help_tags<cr>")
 -- Windows
 nmap("<leader>h", "<C-w>h")

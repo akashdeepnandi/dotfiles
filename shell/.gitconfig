@@ -13,4 +13,4 @@
 [init]
 	defaultBranch = main
 [core]
-	editor = code
+	editor = nvim

@@ -22,6 +22,10 @@ local servers = {
   "yamlls",
   "astro",
   "prismals",
+  "rust_analyzer",
+  "pyright",
+  "solc",
+  "cssls",
 }
 
 lsp_installer.setup {
