@@ -460,7 +460,7 @@ end, {
     description = "App Launcher",
     group = "Apps"
   }), awful.key({ modkey }, "f", function()
-    awful.util.spawn("nautilus")
+    awful.util.spawn("thunar")
   end, {
     description = "Files",
     group = "Apps"

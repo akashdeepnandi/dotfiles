@@ -1,3 +1,6 @@
 [submodule "shell/.zsh/pure"]
 	path = shell/.zsh/pure
 	url = https://github.com/sindresorhus/pure
+[submodule "awesome/.config/awesome/awesome-wm-widgets"]
+	path = awesome/.config/awesome/awesome-wm-widgets
+	url = https://github.com/streetturtle/awesome-wm-widgets
