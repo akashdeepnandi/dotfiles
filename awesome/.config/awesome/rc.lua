@@ -772,6 +772,7 @@ local autostart_apps = {
   "slack -u",
   "megasync",
   "breaktimer",
+  "qbittorrent",
 }
 
 for _, cmd in pairs(autostart_apps) do
