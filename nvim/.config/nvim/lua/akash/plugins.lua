@@ -44,6 +44,13 @@ local plugins = {
         end, { buffer = bufnr })
       end)
 
+      require('mason-lspconfig').setup({
+        ensure_installed = { "lua_ls", "elixirls", "svelte", "tsserver", "cssls", },
+        handlers = {
+          lsp.default_setup,
+        },
+      })
+
       lsp.format_on_save({
         format_opts = {
           async = false,
@@ -115,11 +122,24 @@ local plugins = {
   {
     'nvim-telescope/telescope.nvim',
     tag = '0.1.2',
-    dependencies = { 'nvim-lua/plenary.nvim' },
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' }
+    },
     config = function()
       local builtin = require('telescope.builtin')
-      vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
-      vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
+      local ff = function()
+        builtin.find_files({ hidden = true })
+      end
+      local fa = function()
+        builtin.find_files({ hidden = true, no_ignore = true, no_ignore_parent = true })
+      end
+      local fg = function()
+        builtin.live_grep()
+      end
+      vim.keymap.set('n', '<leader>ff', ff, {})
+      vim.keymap.set('n', '<leader>fg', fg, {})
+      vim.keymap.set('n', '<leader>fa', fa, {})
     end
   },
   {
@@ -130,7 +150,26 @@ local plugins = {
       "nvim-tree/nvim-web-devicons",
     },
     config = function()
-      require("nvim-tree").setup {}
+      vim.g.loaded_netrw = 1
+      vim.g.loaded_netrwPlugin = 1
+      vim.opt.termguicolors = true
+
+
+      require("nvim-tree").setup {
+        sort_by = "case_sensitive",
+        view = {
+          width = 30,
+        },
+        renderer = {
+          group_empty = true,
+        },
+        filters = {
+          dotfiles = true,
+        },
+        update_focused_file = {
+          enable = true,
+        }
+      }
       vim.keymap.set('n', '<leader>e', "<cmd>NvimTreeToggle<cr>", {})
     end,
   },
@@ -169,7 +208,7 @@ local plugins = {
       local configs = require("nvim-treesitter.configs")
       configs.setup {
         --         ensure_installed = "all", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
-        ensure_installed = { "c", "lua", },
+        ensure_installed = { "c", "lua", "elixir", "svelte", "javascript", "typescript", "python", "go", "php" },
         sync_install = false,    -- install languages synchronously (only applied to `ensure_installed`)
         ignore_install = { "" }, -- List of parsers to ignore installing
         autopairs = {
@@ -191,6 +230,38 @@ local plugins = {
     'numToStr/Comment.nvim',
     config = true,
     lazy = false,
+  },
+  {
+    "lewis6991/gitsigns.nvim",
+    config = true,
+    lazy = false,
+  },
+  {
+    'kevinhwang91/nvim-ufo',
+    dependencies = { 'kevinhwang91/promise-async' },
+    config = function()
+      vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
+      vim.o.foldlevelstart = 99
+      vim.o.foldenable = true
+      vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
+      vim.o.foldcolumn = '1'
+
+      vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
+      vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
+      local capabilities = vim.lsp.protocol.make_client_capabilities()
+      capabilities.textDocument.foldingRange = {
+        dynamicRegistration = false,
+        lineFoldingOnly = true
+      }
+      local language_servers = require("lspconfig").util.available_servers() -- or list servers manually like {'gopls', 'clangd'}
+      for _, ls in ipairs(language_servers) do
+        require('lspconfig')[ls].setup({
+          capabilities = capabilities
+          -- you can add other fields for setting up lsp server in this table
+        })
+      end
+      require('ufo').setup()
+    end
   }
 }
 

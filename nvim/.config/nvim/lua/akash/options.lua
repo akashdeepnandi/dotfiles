@@ -45,6 +45,8 @@ local options_map = {
   undofile = true,
   wildmenu = true,
   mouse = "",
+  -- foldexpr = "nvim_treesitter#foldexpr()",
+  -- foldmethod = "expr",
 }
 
 for k, v in pairs(options_map) do
@@ -55,7 +57,7 @@ vim.wo.colorcolumn = "80"
 vim.g.mapleader = ' '
 
 -- local spellcheck_cmd = vim.api.nvim_create_augroup('spellcheck_cmd', {clear = true})
--- 
+--
 -- vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 --   pattern = { "*.md", "*.txt" },
 --   group = spellcheck_cmd,
@@ -71,3 +73,7 @@ vim.g.mapleader = ' '
 -- vim.cmd[[colorscheme nord]]
 -- vim.cmd[[colorscheme gruvbox]]
 -- vim.cmd[[highlight Normal guibg=none]]
+-- vim.cmd [[set nofoldenable]]
+--
+-- vim.api.nvim_set_keymap('n', '/', ':Rg<CR>', { noremap = true })
+-- vim.api.nvim_set_keymap('n', '?', ':Rg?<CR>', { noremap = true })
