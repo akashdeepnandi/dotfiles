@@ -60,3 +60,5 @@ export NIXPKGS_ALLOW_INSECURE=1
 unalias gb
 # User configuration
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+if [ -e /home/akash/.nix-profile/etc/profile.d/nix.sh ]; then . /home/akash/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
