@@ -54,20 +54,20 @@ end
 vim.wo.colorcolumn = "80"
 vim.g.mapleader = ' '
 
-local spellcheck_cmd = vim.api.nvim_create_augroup('spellcheck_cmd', {clear = true})
-
-vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
-  pattern = { "*.md", "*.txt" },
-  group = spellcheck_cmd,
-  desc = 'Change string highlight',
-  callback = function()
-    vim.wo.spell = true
-    vim.bo.spelllang = "en_us"
-  end
-})
+-- local spellcheck_cmd = vim.api.nvim_create_augroup('spellcheck_cmd', {clear = true})
+-- 
+-- vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+--   pattern = { "*.md", "*.txt" },
+--   group = spellcheck_cmd,
+--   desc = 'Change string highlight',
+--   callback = function()
+--     vim.wo.spell = true
+--     vim.bo.spelllang = "en_us"
+--   end
+-- })
 
 -- vim.cmd("colorscheme gruvbox")
 -- vim.g.tokyonight_style = "night"
-vim.cmd[[colorscheme nord]]
+-- vim.cmd[[colorscheme nord]]
 -- vim.cmd[[colorscheme gruvbox]]
-vim.cmd[[highlight Normal guibg=none]]
+-- vim.cmd[[highlight Normal guibg=none]]
