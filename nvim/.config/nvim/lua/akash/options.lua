@@ -44,7 +44,7 @@ local options_map = {
   backup = false,
   undofile = true,
   wildmenu = true,
-  mouse = "",
+  mouse = "a",
   -- foldexpr = "nvim_treesitter#foldexpr()",
   -- foldmethod = "expr",
 }
@@ -77,3 +77,14 @@ vim.g.mapleader = ' '
 --
 -- vim.api.nvim_set_keymap('n', '/', ':Rg<CR>', { noremap = true })
 -- vim.api.nvim_set_keymap('n', '?', ':Rg?<CR>', { noremap = true })
+-- vim.cmd([[
+--   autocmd FileType go set tabstop=4 shiftwidth=4 expandtab=true
+-- ]])
+--
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "go",
+  callback = function()
+    vim.opt_local.shiftwidth = 8
+    vim.opt_local.softtabstop = 8
+  end
+})
