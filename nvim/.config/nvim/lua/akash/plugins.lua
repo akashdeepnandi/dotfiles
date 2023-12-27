@@ -50,7 +50,7 @@ local plugins = {
       end)
 
       require('mason-lspconfig').setup({
-        ensure_installed = { "lua_ls", "elixirls", "svelte", "tsserver", "cssls", "gopls", "pyright", },
+        ensure_installed = { "lua_ls", "elixirls", "svelte", "tsserver", "cssls", "gopls", "pyright", "clangd", },
         handlers = {
           lsp.default_setup,
         },
@@ -63,6 +63,7 @@ local plugins = {
         info = '»'
       })
 
+
       lsp.format_on_save({
         format_opts = {
           async = false,
@@ -70,11 +71,28 @@ local plugins = {
         },
         servers = {
           ['lua_ls'] = { 'lua' },
-          ['prettier'] = { 'svelte', "javascript", "typescript", "css", "html" },
+          -- ['prettier'] = { 'svelte', "javascript", "typescript", "css", "html" },
           ['pyright'] = { 'python', },
+          ['clang-format'] = { 'cpp' },
           -- if you have a working setup with null-ls
           -- you can specify filetypes it can format.
-          -- ['null-ls'] = {'javascript', 'typescript'},
+          ['null-ls'] = { 'javascript', 'typescript', "css", "html", "svelte" },
+        }
+      })
+
+      local null_ls = require('null-ls')
+      local null_opts = lsp.build_options('null-ls', {})
+
+      null_ls.setup({
+        on_attach = function(client, bufnr)
+          null_opts.on_attach(client, bufnr)
+          print("hello")
+        end,
+        sources = {
+          --- Replace these with the tools you have installed
+          null_ls.builtins.formatting.black,
+          null_ls.builtins.formatting.clang_format,
+          null_ls.builtins.formatting.prettier,
         }
       })
 
@@ -149,14 +167,6 @@ local plugins = {
       -- black setup
       require("mason-null-ls").setup({
         ensure_installed = { "black" }
-      })
-
-      local null_ls = require("null-ls")
-
-      null_ls.setup({
-        sources = {
-          null_ls.builtins.formatting.black,
-        },
       })
     end,
   },
@@ -250,7 +260,7 @@ local plugins = {
       local configs = require("nvim-treesitter.configs")
       configs.setup {
         --         ensure_installed = "all", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
-        ensure_installed = { "c", "lua", "elixir", "svelte", "javascript", "typescript", "python", "go", "php" },
+        ensure_installed = { "c", "lua", "elixir", "svelte", "javascript", "typescript", "python", "go", "php", "cpp" },
         sync_install = false,    -- install languages synchronously (only applied to `ensure_installed`)
         ignore_install = { "" }, -- List of parsers to ignore installing
         autopairs = {
