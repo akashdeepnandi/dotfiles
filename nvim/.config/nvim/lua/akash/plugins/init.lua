@@ -60,24 +60,24 @@ local plugins = {
     config = true,
     lazy = false,
   },
-  require("akash.plugins.nvim-ufo"),
   require("akash.plugins.indent-blankline"),
   { "SidOfc/mkdx", ft = { "markdown" }, },
   {
     "stevearc/dressing.nvim",
     event = "VeryLazy",
   },
-  {
-    "kylechui/nvim-surround",
-    event = { "BufReadPre", "BufNewFile" },
-    version = "main",
-    config = true,
-  },
+  -- {
+  --   "kylechui/nvim-surround",
+  --   event = { "BufReadPre", "BufNewFile" },
+  --   version = "main",
+  --   config = true,
+  -- },
   require("akash.plugins.nvim-cmp"),
   require("akash.plugins.lsp.mason"),
   require("akash.plugins.lsp.lspconfig"),
   require("akash.plugins.formatter"),
   require("akash.plugins.linter"),
+  require("akash.plugins.nvim-ufo"),
 }
 
 

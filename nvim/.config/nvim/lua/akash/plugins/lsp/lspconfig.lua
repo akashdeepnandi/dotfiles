@@ -3,14 +3,16 @@ return {
   event = { "BufReadPre", "BufNewFile" },
   dependencies = {
     "hrsh7th/cmp-nvim-lsp",
-    { "antosha417/nvim-lsp-file-operations", config = true }
+    { "antosha417/nvim-lsp-file-operations", config = true },
   },
   config = function()
+    -- import lspconfig plugin
     local lspconfig = require("lspconfig")
+
+    -- import cmp-nvim-lsp plugin
     local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
-
-    local keymap = vim.keymap
+    local keymap = vim.keymap -- for conciseness
 
     local opts = { noremap = true, silent = true }
     local on_attach = function(client, bufnr)
@@ -36,6 +38,7 @@ return {
       keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts) -- see available code actions, in visual mode will apply to selection
 
       opts.desc = "Smart rename"
+      print("asasas")
       keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts) -- smart rename
 
       opts.desc = "Show buffer diagnostics"
@@ -57,15 +60,16 @@ return {
       keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts) -- mapping to restart lsp if necessary
     end
 
-    -- used for autocompletion
+    -- used to enable autocompletion (assign to every lsp server config)
     local capabilities = cmp_nvim_lsp.default_capabilities()
 
+    -- Change the Diagnostic symbols in the sign column (gutter)
+    -- (not in youtube nvim video)
     local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
     for type, icon in pairs(signs) do
       local hl = "DiagnosticSign" .. type
       vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
     end
-
     local servers = require("akash.plugins.lsp.servers")
 
     for _, name in pairs(servers.names) do
@@ -80,5 +84,5 @@ return {
       end
       lspconfig[name].setup(opts)
     end
-  end
+  end,
 }
