@@ -66,18 +66,28 @@ local plugins = {
     "stevearc/dressing.nvim",
     event = "VeryLazy",
   },
-  -- {
-  --   "kylechui/nvim-surround",
-  --   event = { "BufReadPre", "BufNewFile" },
-  --   version = "main",
-  --   config = true,
-  -- },
+  {
+    "kylechui/nvim-surround",
+    event = { "BufReadPre", "BufNewFile" },
+    version = "main",
+    config = true,
+  },
+  {
+    "folke/drop.nvim",
+    event = "VimEnter",
+    config = true,
+    opts = {
+      theme = "xmas", -- can be one of rhe default themes, or a custom theme
+      screensaver = 1000 * 60 * 5,
+    }
+  },
   require("akash.plugins.nvim-cmp"),
   require("akash.plugins.lsp.mason"),
   require("akash.plugins.lsp.lspconfig"),
   require("akash.plugins.formatter"),
   require("akash.plugins.linter"),
   require("akash.plugins.nvim-ufo"),
+  require("akash.plugins.trouble"),
 }
 
 

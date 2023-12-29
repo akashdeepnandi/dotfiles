@@ -20,6 +20,36 @@ return {
     "rust_analyzer", -- Rust
     "vuels",         -- Vue
   },
+  formatters = {
+    "prettier",
+    "stylua",
+    "isort",
+    "black",
+    "pylint",
+    "eslint_d",
+    "rustfmt",
+    "golines",
+  },
+  formatters_by_ft = {
+    javascript = { "prettier" },
+    typescript = { "prettier" },
+    javascriptreact = { "prettier" },
+    typescriptreact = { "prettier" },
+    svelte = { "prettier" },
+    vue = { "prettier" },
+    css = { "prettier" },
+    html = { "prettier" },
+    json = { "prettier" },
+    yaml = { "prettier" },
+    cpp = { "clang-format" },
+    python = { "isort", "black" }, -- example on how to have multiple
+    -- go = { "goimports", "golines" },
+    go = { "golines" },
+    lua = { "stylelua" },
+    graphql = { "prettier" },
+    rust = { "rustfmt" },
+    elixir = { "mix" },
+  },
   opts = {
     emmet_ls = {
       filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "svelte" }

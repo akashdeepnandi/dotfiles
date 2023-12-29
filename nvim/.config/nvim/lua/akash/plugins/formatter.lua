@@ -3,26 +3,10 @@ return {
   event = { "BufReadPre", "BufNewFile" },
   config = function()
     local conform = require("conform")
+    local formatters_by_ft = require("akash.plugins.lsp.servers").formatters_by_ft
 
     conform.setup({
-      formatters_by_ft = {
-        javascript = { "prettier" },
-        typescript = { "prettier" },
-        javascriptreact = { "prettier" },
-        typescriptreact = { "prettier" },
-        svelte = { "prettier" },
-        vue = { "prettier" },
-        css = { "prettier" },
-        html = { "prettier" },
-        json = { "prettier" },
-        yaml = { "prettier" },
-        cpp = { "clang-format" },
-        -- python = { "black" },
-        python = { "isort", "black" }, -- example on how to have multiple
-        go = { "goimports" },
-        lua = { "stylelua" },
-        graphql = { "prettier" },
-      },
+      formatters_by_ft = formatters_by_ft,
       format_on_save = {
         lsp_fallback = true,
         async = false,

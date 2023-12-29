@@ -23,9 +23,9 @@ fi
 
 export EDITOR="nvim"
 
-# fpath=(${ASDF_DIR}/completions $fpath)
-autoload -U compinit && compinit
+fpath=(${ASDF_DIR}/completions $fpath)
 
+autoload -U compinit && compinit
 # source setup files
 [ -s "$HOME/secrets" ] && source $HOME/secrets
 source ~/aliases
