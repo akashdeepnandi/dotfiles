@@ -19,6 +19,7 @@ return {
     "marksman",      -- markdown
     "rust_analyzer", -- Rust
     "vuels",         -- Vue
+    "taplo",         -- Toml
   },
   formatters = {
     "prettier",
@@ -44,6 +45,7 @@ return {
     "rust",
     "bash",
     "graphql",
+    "toml",
   },
   formatters_by_ft = {
     javascript = { "prettier" },

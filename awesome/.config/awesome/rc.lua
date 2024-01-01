@@ -96,7 +96,7 @@ awful.layout.layouts = { awful.layout.suit.tile, awful.layout.suit.floating, -- 
 myawesomemenu = { { "hotkeys", function()
   hotkeys_popup.show_help(nil, awful.screen.focused())
 end }, { "manual", terminal .. " -e man awesome" }, { "edit config", editor_cmd .. " " .. awesome.conffile },
-{ "restart", awesome.restart }, { "quit", function()
+  { "restart", awesome.restart }, { "quit", function()
   awesome.quit()
 end } }
 
@@ -148,8 +148,8 @@ local taglist_buttons = gears.table.join(
       end
     end
   )
-  -- awful.button({}, 4, function(t) awful.tag.viewnext(t.screen) end),
-  -- awful.button({}, 5, function(t) awful.tag.viewprev(t.screen) end)
+-- awful.button({}, 4, function(t) awful.tag.viewnext(t.screen) end),
+-- awful.button({}, 5, function(t) awful.tag.viewprev(t.screen) end)
 )
 
 local tasklist_buttons = gears.table.join(awful.button({}, 1, function(c)
@@ -243,7 +243,7 @@ awful.screen.connect_for_each_screen(function(s)
       s.mypromptbox
     },
     s.mytasklist, -- Middle widget
-    { -- Right widgets
+    {             -- Right widgets
       layout = wibox.layout.fixed.horizontal,
       wibox.widget.systray(),
       space,
@@ -273,38 +273,38 @@ end)
 -- {{{ Mouse bindings
 root.buttons(gears.table.join(
   awful.button({}, 3, function() mymainmenu:toggle() end)
-  -- awful.button({}, 4, awful.tag.viewnext),
-  -- awful.button({}, 5, awful.tag.viewprev)
+-- awful.button({}, 4, awful.tag.viewnext),
+-- awful.button({}, 5, awful.tag.viewprev)
 ))
 -- }}}
 
 -- {{{ Key bindings
 globalkeys = gears.table.join(awful.key({ modkey }, "]", function()
-  awful.spawn("brightnessctl s +10% -q")
-end, {
-  description = "increase brightness",
-  group = "Media"
-}), awful.key({ modkey }, "[", function()
-  awful.spawn("brightnessctl s 10%- -q")
-end, {
-  description = "decrease brightness",
-  group = "Media"
-}), awful.key({}, "XF86AudioRaiseVolume", function()
-  awful.spawn("pactl set-sink-volume @DEFAULT_SINK@ +2%")
-end, {
-  description = "increase volume",
-  group = "Media"
-}), awful.key({}, "XF86AudioLowerVolume", function()
-  awful.spawn("pactl set-sink-volume @DEFAULT_SINK@ -2%")
-end, {
-  description = "decrease volume",
-  group = "Media"
-}), awful.key({}, "XF86AudioMute", function()
-  awful.spawn("pactl set-sink-mute @DEFAULT_SINK@ toggle")
-end, {
-  description = "decrease volume",
-  group = "Media"
-}),
+    awful.spawn("brightnessctl s +10% -q")
+  end, {
+    description = "increase brightness",
+    group = "Media"
+  }), awful.key({ modkey }, "[", function()
+    awful.spawn("brightnessctl s 10%- -q")
+  end, {
+    description = "decrease brightness",
+    group = "Media"
+  }), awful.key({}, "XF86AudioRaiseVolume", function()
+    awful.spawn("pactl set-sink-volume @DEFAULT_SINK@ +2%")
+  end, {
+    description = "increase volume",
+    group = "Media"
+  }), awful.key({}, "XF86AudioLowerVolume", function()
+    awful.spawn("pactl set-sink-volume @DEFAULT_SINK@ -2%")
+  end, {
+    description = "decrease volume",
+    group = "Media"
+  }), awful.key({}, "XF86AudioMute", function()
+    awful.spawn("pactl set-sink-mute @DEFAULT_SINK@ toggle")
+  end, {
+    description = "decrease volume",
+    group = "Media"
+  }),
 
   awful.key({ modkey, "Shift" }, "-", function()
     awful.spawn("pactl set-sink-volume @DEFAULT_SINK@ +3%")
@@ -382,7 +382,7 @@ end, {
     description = "open a terminal",
     group = "launcher"
   }), awful.key({ modkey, "Shift" }, "b", function()
-    awful.spawn(os.getenv("HOME").."/.local/bin/Bitwarden-2022.10.1-x86_64.AppImage")
+    awful.spawn(os.getenv("HOME") .. "/.local/bin/Bitwarden-2022.10.1-x86_64.AppImage")
   end, {
     description = "open Bitwarden",
     group = "launcher"
@@ -469,7 +469,7 @@ end, {
   end, {
     description = "Browser",
     group = "Apps"
-  }),  awful.key({ modkey }, "b", function()
+  }), awful.key({ modkey }, "b", function()
     awful.util.spawn("brave-browser")
   end, {
     description = "Settings",
@@ -488,35 +488,35 @@ end, {
   }))
 
 clientkeys = gears.table.join(awful.key({ modkey }, "z", function(c)
-  c.fullscreen = not c.fullscreen
-  c:raise()
-end, {
-  description = "toggle fullscreen",
-  group = "client"
-}), awful.key({ modkey }, "q", function(c)
-  c:kill()
-end, {
-  description = "close",
-  group = "client"
-}), awful.key({ modkey, "Control" }, "space", awful.client.floating.toggle, {
-  description = "toggle floating",
-  group = "client"
-}), awful.key({ modkey, "Control" }, "Return", function(c)
-  c:swap(awful.client.getmaster())
-end, {
-  description = "move to master",
-  group = "client"
-}), awful.key({ modkey }, "o", function(c)
-  c:move_to_screen()
-end, {
-  description = "move to screen",
-  group = "client"
-}), awful.key({ modkey }, "t", function(c)
-  c.ontop = not c.ontop
-end, {
-  description = "toggle keep on top",
-  group = "client"
-}),
+    c.fullscreen = not c.fullscreen
+    c:raise()
+  end, {
+    description = "toggle fullscreen",
+    group = "client"
+  }), awful.key({ modkey }, "q", function(c)
+    c:kill()
+  end, {
+    description = "close",
+    group = "client"
+  }), awful.key({ modkey, "Control" }, "space", awful.client.floating.toggle, {
+    description = "toggle floating",
+    group = "client"
+  }), awful.key({ modkey, "Control" }, "Return", function(c)
+    c:swap(awful.client.getmaster())
+  end, {
+    description = "move to master",
+    group = "client"
+  }), awful.key({ modkey }, "o", function(c)
+    c:move_to_screen()
+  end, {
+    description = "move to screen",
+    group = "client"
+  }), awful.key({ modkey }, "t", function(c)
+    c.ontop = not c.ontop
+  end, {
+    description = "toggle keep on top",
+    group = "client"
+  }),
   -- awful.key({modkey}, "n", function(c)
   --     -- The client currently has the input focus, so it cannot be
   --     -- minimized, since minimized clients can't have the focus.
@@ -632,11 +632,11 @@ awful.rules.rules = { -- All clients will match this rule.
   }, -- Floating clients.
   {
     rule_any = {
-      instance = { "DTA", -- Firefox addon DownThemAll.
-        "copyq", -- Includes session name in class.
+      instance = { "DTA",                                                     -- Firefox addon DownThemAll.
+        "copyq",                                                              -- Includes session name in class.
         "pinentry" },
       class = { "Arandr", "Blueman-manager", "Gpick", "Kruler", "MessageWin", -- kalarm.
-        "Sxiv", "Tor Browser", -- Needs a fixed window size to avoid fingerprinting by screen size.
+        "Sxiv", "Tor Browser",                                                -- Needs a fixed window size to avoid fingerprinting by screen size.
         "Wpa_gui", "veromix", "xtightvncviewer",
         "MEGAsync"
       },
@@ -646,8 +646,8 @@ awful.rules.rules = { -- All clients will match this rule.
       name = { "Event Tester" -- xev.
       },
       role = { "AlarmWindow", -- Thunderbird's calendar.
-        "ConfigManager", -- Thunderbird's about:config.
-        "pop-up" -- e.g. Google Chrome's (detached) Developer Tools.
+        "ConfigManager",      -- Thunderbird's about:config.
+        "pop-up"              -- e.g. Google Chrome's (detached) Developer Tools.
       }
     },
     properties = {
@@ -701,7 +701,7 @@ client.connect_signal("request::titlebars", function(c)
       buttons = buttons,
       layout = wibox.layout.fixed.horizontal
     },
-    { -- Middle
+    {   -- Middle
       { -- Title
         align = "center",
         widget = awful.titlebar.widget.titlewidget(c)
@@ -722,15 +722,15 @@ client.connect_signal("request::titlebars", function(c)
 end)
 
 local function set_client_style(c)
-    if c.floating or c.maximized or c.fullscreen then
-      c.border_width = 0
-      c.shape = gears.shape.rectangle
-    else
-      c.border_width = 2
-      c.shape = function(cr,w,h)
-        gears.shape.rounded_rect(cr,w,h,10)
-      end
+  if c.floating or c.maximized or c.fullscreen then
+    c.border_width = 0
+    c.shape = gears.shape.rectangle
+  else
+    c.border_width = 2
+    c.shape = function(cr, w, h)
+      gears.shape.rounded_rect(cr, w, h, 10)
     end
+  end
 end
 
 client.connect_signal("property::fullscreen", set_client_style)
@@ -754,9 +754,9 @@ client.connect_signal("unfocus", function(c)
   -- c.border_width = 0
 end)
 -- }}}
-client.connect_signal("manage", function (c)
-  c.shape = function(cr,w,h)
-  gears.shape.rounded_rect(cr,w,h,15)
+client.connect_signal("manage", function(c)
+  c.shape = function(cr, w, h)
+    gears.shape.rounded_rect(cr, w, h, 15)
   end
 end)
 
@@ -768,7 +768,7 @@ local autostart_apps = {
   "mega-whoami",
   "blueman-applet",
   "bluemail",
-  os.getenv("HOME").."/.local/bin/Bitwarden-2022.10.1-x86_64.AppImage",
+  os.getenv("HOME") .. "/.local/bin/Bitwarden-2022.10.1-x86_64.AppImage",
   "slack -u",
   "megasync",
   "breaktimer",
@@ -776,7 +776,7 @@ local autostart_apps = {
 }
 
 for _, cmd in pairs(autostart_apps) do
-  awful.util.spawn(cmd)
+  -- awful.util.spawn(cmd)
 end
 
 -- Autostart apps
