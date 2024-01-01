@@ -88,6 +88,16 @@ local plugins = {
   require("akash.plugins.linter"),
   require("akash.plugins.nvim-ufo"),
   require("akash.plugins.trouble"),
+  {
+    "folke/which-key.nvim",
+    event = "VeryLazy",
+    init = function()
+      vim.o.timeout = true
+      vim.o.timeoutlen = 300
+    end,
+    opts = {
+    }
+  }
 }
 
 

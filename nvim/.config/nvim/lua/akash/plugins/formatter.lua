@@ -20,6 +20,6 @@ return {
         async = false,
         timeout_ms = 500,
       })
-    end, { desc = "Format File" })
+    end, { desc = "Format Document" })
   end
 }

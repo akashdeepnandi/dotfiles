@@ -17,9 +17,9 @@ return {
     local fg = function()
       builtin.live_grep()
     end
-    vim.keymap.set('n', '<leader>ff', ff, {})
-    vim.keymap.set('n', '<leader>fg', fg, {})
-    vim.keymap.set('n', '<leader>fa', fa, {})
+    vim.keymap.set('n', '<leader>ff', ff, { noremap = true, silent = true, desc = "Find Files" })
+    vim.keymap.set('n', '<leader>fg', fg, { noremap = true, silent = true, desc = "Live Grep" })
+    vim.keymap.set('n', '<leader>fa', fa, { noremap = true, silent = true, desc = "Find All Files" })
     local telescope = require 'telescope'
 
     telescope.setup {

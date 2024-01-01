@@ -27,6 +27,6 @@ return {
         update_root = true,
       }
     }
-    vim.keymap.set('n', '<leader>e', "<cmd>NvimTreeToggle<cr>", {})
+    vim.keymap.set('n', '<leader>e', "<cmd>NvimTreeToggle<cr>", { desc = "Open Nvim Tree" })
   end,
 }

@@ -8,8 +8,8 @@ return {
     vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
     vim.o.foldcolumn = '1'
 
-    vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
-    vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
+    vim.keymap.set('n', 'zR', require('ufo').openAllFolds, { desc = "Open All Folds" })
+    vim.keymap.set('n', 'zM', require('ufo').closeAllFolds, { desc = "Close All Folds" })
     local capabilities = vim.lsp.protocol.make_client_capabilities()
     capabilities.textDocument.foldingRange = {
       dynamicRegistration = false,
