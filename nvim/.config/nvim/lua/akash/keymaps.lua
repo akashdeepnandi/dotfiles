@@ -6,9 +6,21 @@ local nmap = function(shortcut, command, desc)
   map('n', shortcut, command, desc)
 end
 
+local vmap = function(shortcut, command, desc)
+  map('v', shortcut, command, desc)
+end
+
 local nvmap = function(shortcut, command, desc)
   map({ "n", "v" }, shortcut, command, desc)
 end
+
+-- Copy and Paste
+-- COPY
+vmap("<leader>y", '"+y', "System Copy Selection")
+nmap("<leader>y", ':%y+<CR>', "System Copy Buffer")
+
+-- PASTE
+nvmap("<leader>p", '"+p', "System Copy Selection")
 
 nmap("g[", "<cmd>Gitsigns prev_hunk<cr>", "Git Previous Hunk")
 nmap("g]", "<cmd>Gitsigns next_hunk<cr>", "Git Next Hunk")

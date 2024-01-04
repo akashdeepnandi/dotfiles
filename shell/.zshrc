@@ -35,10 +35,15 @@ source ~/paths
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 . "$HOME/.cargo/env"
 
-# Nix
+# Ruby
+if  type rbenv &> /dev/null
+then
+  eval "$(rbenv init -)"
+fi
 
+# Nix
 export NIXPKGS_ALLOW_INSECURE=1
-# if [ -e /home/akash/.nix-profile/etc/profile.d/nix.sh ]; then . /home/akash/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+if [ -e /home/akash/.nix-profile/etc/profile.d/nix.sh ]; then . /home/akash/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
 
 if which starship >/dev/null; then
   eval "$(starship init zsh)"

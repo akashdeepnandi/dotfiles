@@ -776,7 +776,7 @@ local autostart_apps = {
 }
 
 for _, cmd in pairs(autostart_apps) do
-  -- awful.util.spawn(cmd)
+  awful.util.spawn(cmd)
 end
 
 -- Autostart apps
