@@ -3,16 +3,16 @@ return {
     "tsserver",      -- ts, js
     "html",          -- html
     "cssls",         -- css
-    "tailwindcss",   -- tailwind
+    -- "tailwindcss",   -- tailwind
     "svelte",        -- svelte
     "lua_ls",        -- lua
-    "emmet_ls",      -- emmet html
+    -- "emmet_ls",      -- emmet html
     "prismals",      -- prisma
     "pyright",       -- python
     "bashls",        -- bash
     "clangd",        -- c, cpp
     "dockerls",      -- docker
-    "eslint",        -- eslint
+    -- "eslint",        -- eslint
     "elixirls",      -- elixir
     "gopls",         -- golang
     "jsonls",        -- json
@@ -30,6 +30,7 @@ return {
     "eslint_d",
     "rustfmt",
     "golines",
+    -- "mix",
   },
   treesitter = {
     "c",
@@ -65,7 +66,7 @@ return {
     lua = { "stylelua" },
     graphql = { "prettier" },
     rust = { "rustfmt" },
-    elixir = { "mix" },
+    -- elixir = { "mix" },
   },
   opts = {
     emmet_ls = {
@@ -97,5 +98,8 @@ return {
         },
       },
     },
+    elixirls = {
+      cmd = { vim.fn.stdpath("data") .. "/mason/packages/elixir-ls/language_server.sh" }
+    }
   }
 }

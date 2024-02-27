@@ -97,7 +97,8 @@ local plugins = {
     end,
     opts = {
     }
-  }
+  },
+  -- require("akash.plugins.elixir"),
 }
 
 

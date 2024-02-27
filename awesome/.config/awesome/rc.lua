@@ -465,7 +465,7 @@ globalkeys = gears.table.join(awful.key({ modkey }, "]", function()
     description = "Files",
     group = "Apps"
   }), awful.key({ modkey }, "e", function()
-    awful.util.spawn("bluemail")
+    awful.util.spawn("/opt/BlueMail/bluemail --no-sandbox %U")
   end, {
     description = "Browser",
     group = "Apps"
@@ -767,12 +767,13 @@ local autostart_apps = {
   "xbindkeys",
   "mega-whoami",
   "blueman-applet",
-  "bluemail",
+  -- "bluemail",
   os.getenv("HOME") .. "/.local/bin/Bitwarden-2022.10.1-x86_64.AppImage",
   "slack -u",
   "megasync",
   "breaktimer",
   "qbittorrent",
+  "/opt/BlueMail/bluemail --no-sandbox %U"
 }
 
 for _, cmd in pairs(autostart_apps) do

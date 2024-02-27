@@ -44,6 +44,9 @@ fi
 # Nix
 export NIXPKGS_ALLOW_INSECURE=1
 if [ -e /home/akash/.nix-profile/etc/profile.d/nix.sh ]; then . /home/akash/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+# erlang
+export KERL_BUILD_DOCS="yes"
+export KERL_CONFIGURE_OPTIONS="-with-ssl=/usr/local/ssl"
 
 if which starship >/dev/null; then
   eval "$(starship init zsh)"

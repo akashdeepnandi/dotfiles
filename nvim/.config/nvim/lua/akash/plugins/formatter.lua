@@ -11,7 +11,7 @@ return {
         lsp_fallback = true,
         async = false,
         timeout_ms = 500,
-      }
+      },
     })
 
     vim.keymap.set({ "n", "v" }, "<leader>fm", function()
