@@ -49,7 +49,7 @@ local plugins = {
       },
     },
   },
-  require("akash.plugins.treesitter"),
+  -- require("akash.plugins.treesitter"),
   {
     'numToStr/Comment.nvim',
     config = true,
@@ -60,7 +60,7 @@ local plugins = {
     config = true,
     lazy = false,
   },
-  require("akash.plugins.indent-blankline"),
+  -- require("akash.plugins.indent-blankline"),
   { "SidOfc/mkdx", ft = { "markdown" }, },
   {
     "stevearc/dressing.nvim",
