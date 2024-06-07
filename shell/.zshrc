@@ -51,3 +51,12 @@ export KERL_CONFIGURE_OPTIONS="-with-ssl=/usr/local/ssl"
 if which starship >/dev/null; then
   eval "$(starship init zsh)"
 fi
+
+if which zoxide >/dev/null; then
+ eval "$(zoxide init zsh)"
+fi
+
+# if which fzf >/dev/null; then
+#   eval "$(fzf --zsh)"
+# fi
+if [ -f "/home/akash/.config/fabric/fabric-bootstrap.inc" ]; then . "/home/akash/.config/fabric/fabric-bootstrap.inc"; fi

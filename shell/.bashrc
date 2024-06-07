@@ -121,3 +121,9 @@ fi
 if which starship >/dev/null; then
   eval "$(starship init bash)"
 fi
+
+if which zoxide >/dev/null; then
+  eval "$(zoxide init bash)"
+fi
+
+if [ -f "/home/akash/.config/fabric/fabric-bootstrap.inc" ]; then . "/home/akash/.config/fabric/fabric-bootstrap.inc"; fi

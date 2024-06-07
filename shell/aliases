@@ -43,3 +43,4 @@ alias mux="tmuxinator"
 alias cl="clear"
 alias john="$HOME/Downloads/john/run/john"
 alias cat="batcat"
+alias cd=z

@@ -1,4 +1,5 @@
 eval `luarocks path --bin` &
 ulauncher &
-xmodmap -e 'keysym Escape = Escape asciitilde Escape' &
-$HOME/.screenlayout/awesome.sh
+xmodmap -e 'keysym Escape = Escape asciitilde Escape'
+# xmodmap -e 'keysym Escape = Escape asciitilde Escape' &
+# [$HOME/.screenlayout/awesome.sh

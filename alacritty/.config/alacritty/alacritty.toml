@@ -1,4 +1,4 @@
-import = ["~/.config/alacritty/cobalt2.toml"]
+import = ["~/.config/alacritty/catppuccin-macchiato.toml"]
 [cursor]
 blink_interval = 500
 
@@ -33,11 +33,12 @@ args = ["--login"]
 program = "/usr/bin/zsh"
 
 [window]
-decorations = "none"
+# decorations = "none"
 dynamic_padding = true
-dynamic_title = false
-title = "Alacritty"
+# dynamic_title = false
+# title = "Alacritty"
+# opacity = 0.9
 
 [window.dimensions]
-columns = 80
-lines = 25
+columns = 160
+lines = 50
