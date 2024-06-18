@@ -49,6 +49,9 @@ return {
       require('lualine').setup {
         options = {
           theme = 'catppuccin',
+          icons_enabled = true,
+          component_separators = '|',
+          section_separators = { left = '', right = '' },
           -- ... the rest of your lualine config
         },
       }
@@ -61,7 +64,7 @@ return {
     opts = {
       options = {
         mode = 'tabs',
-        separator_style = 'slant',
+        separator_style = 'thin',
       },
     },
   },
