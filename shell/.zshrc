@@ -19,6 +19,10 @@ if which zoxide >/dev/null; then
  eval "$(zoxide init zsh)"
 fi
 
+if  type rbenv &> /dev/null; then
+  eval "$(rbenv init -)"
+fi
+
 ###########
 
 # programming
@@ -50,7 +54,7 @@ zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
 zinit light Aloxaf/fzf-tab
-zinit ice depth=1; zinit light jeffreytse/zsh-vi-mode
+set -o vi
 
 # load zsh-completions
 autoload -U compinit && compinit
@@ -85,3 +89,14 @@ zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --icons --color=always $real
 [ -s "$HOME/secrets" ] && source $HOME/secrets
 source ~/aliases
 source ~/paths
+
+[ -s "$HOME/.kubectl-completion.zsh" ] && source ~/.kubectl-completion.zsh
+
+export PATH="$HOME/bb-tools/bin:$PATH"
+export PATH="$HOME/bb-tools/bin:$PATH"
+export PATH="$HOME/bb-tools/bin:$PATH"
+export PATH="$HOME/bb-tools/bin:$PATH"
+export PATH="$HOME/bb-tools/bin:$PATH"
+export PATH="/home/akash/bb/tools/bin:/home/akash/bb/go-tools/bin:$PATH"
+eval "$(uv generate-shell-completion zsh)"
+eval "$(uvx --generate-shell-completion zsh)"

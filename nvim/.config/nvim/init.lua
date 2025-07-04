@@ -1,5 +1,4 @@
 require 'custom.options'
-require 'custom.keymaps'
 
 -- Set <space> as the leader key
 -- See `:help mapleader`
@@ -498,7 +497,9 @@ require('lazy').setup({
         tsserver = {},
         html = {},
         cssls = {},
-        tailwindcss = {},
+        tailwindcss = {
+          filetypes = { 'html', 'typescriptreact', 'javascriptreact', 'css', 'sass', 'scss', 'less', 'svelte', 'tsx', 'jsx' },
+        },
         svelte = {},
         emmet_ls = {
           filetypes = { 'html', 'typescriptreact', 'javascriptreact', 'css', 'sass', 'scss', 'less', 'svelte' },
@@ -513,6 +514,7 @@ require('lazy').setup({
           cmd = { vim.fn.stdpath 'data' .. '/mason/packages/elixir-ls/language_server.sh' },
         },
         gopls = {},
+        htmx = {},
         jsonls = {},
         marksman = {},
         rust_analyzer = {
@@ -588,6 +590,8 @@ require('lazy').setup({
         'eslint_d',
         'rustfmt',
         'golines',
+        'tailwindcss',
+        'htmx',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
@@ -909,3 +913,4 @@ require('lazy').setup({
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
+require 'custom.keymaps'

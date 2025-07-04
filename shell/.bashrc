@@ -126,4 +126,10 @@ if which zoxide >/dev/null; then
   eval "$(zoxide init bash)"
 fi
 
-if [ -f "/home/akash/.config/fabric/fabric-bootstrap.inc" ]; then . "/home/akash/.config/fabric/fabric-bootstrap.inc"; fi
+if  type rbenv &> /dev/null; then
+  eval "$(rbenv init -)"
+fi
+
+export PATH="$HOME/bb-tools/bin:$PATH"
+export PATH="/home/akash/bb/tools/bin:/home/akash/bb/go-tools/bin:$PATH"
+eval "$(uv generate-shell-completion bash)"

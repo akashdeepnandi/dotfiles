@@ -24,7 +24,7 @@ local options_map = {
     '**/.git/*',
   },
   autoread = true,
-  lazyredraw = true,
+  -- lazyredraw = true,
   foldenable = true,
   hidden = true,
   number = true,
