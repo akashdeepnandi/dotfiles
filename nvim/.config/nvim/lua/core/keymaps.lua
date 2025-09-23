@@ -60,31 +60,25 @@ nmap('<C-Right>', ':vertical resize +2<CR>', 'Buffer Descrease Height')
 map('v', '<', '<gv', 'Indent left')
 map('v', '>', '>gv', 'Indent Right')
 
-
-
 -- save file without auto-formatting
-nmap('<leader>w', '<cmd>noautocmd w <CR>', "Save without formatting")
-
+nmap('<leader>w', '<cmd>noautocmd w <CR>', 'Save without formatting')
 
 -- delete single character without copying into register
-nmap('x', '"_x', "Delete single char without replacing register")
+nmap('x', '"_x', 'Delete single char without replacing register')
 
 -- Vertical scroll and center
-nmap('<C-d>', '<C-d>zz', "Scroll Down and Center")
-nmap('<C-u>', '<C-u>zz', "Scroll Up and Center")
+nmap('<C-d>', '<C-d>zz', 'Scroll Down and Center')
+nmap('<C-u>', '<C-u>zz', 'Scroll Up and Center')
 
 -- Find and center
-nmap('n', 'nzzzv', "Find next and center")
-nmap('N', 'Nzzzv', "Find previous and center")
-
-
+nmap('n', 'nzzzv', 'Find next and center')
+nmap('N', 'Nzzzv', 'Find previous and center')
 
 -- Toggle line wrapping
-nmap('<leader>lw', '<cmd>set wrap!<CR>', "Toggle Line Wrap")
-
+nmap('<leader>lw', '<cmd>set wrap!<CR>', 'Toggle Line Wrap')
 
 -- Keep last yanked when pasting
-map('v', 'p', '"_dP', "Keep Last yanked")
+map('v', 'p', '"_dP', 'Keep Last yanked')
 
 -- Diagnostic keymaps
 nmap('[d', vim.diagnostic.goto_prev, 'Go to previous diagnostic message')
@@ -93,5 +87,4 @@ nmap('<leader>d', vim.diagnostic.open_float, 'Open floating diagnostic message')
 nmap('<leader>q', vim.diagnostic.setloclist, 'Open diagnostics list')
 nmap('<leader>q', vim.diagnostic.setloclist, 'Open diagnostic [Q]uickfix list')
 
-
-
+nmap('<leader>g', '<cmd>Git<cr>', 'Open Git')

@@ -34,7 +34,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
       -- },
       -- pickers = {}
       defaults = {
-        file_ignore_patterns = { '**/node_modules', '.git/', 'node_modules' },
+        file_ignore_patterns = { '**/node_modules', '%.git', '%.venv', '%venv', '**/__pycache__' },
         vimgrep_arguments = {
           'rg',
           '--color=never',
@@ -68,11 +68,11 @@ return { -- Fuzzy Finder (files, lsp, etc)
       },
       pickers = {
         find_files = {
-          file_ignore_patterns = { 'node_modules', '%.git', '%.venv', '%venv' },
+          -- file_ignore_patterns = { 'node_modules', '%.git', '%.venv', '%venv' },
           hidden = true,
         },
         live_grep = {
-          file_ignore_patterns = { 'node_modules', '%.git', '%.venv', '%venv' },
+          -- file_ignore_patterns = { 'node_modules', '%.git', '%.venv', '%venv' },
           additional_args = function(_)
             return { '--hidden' }
           end,

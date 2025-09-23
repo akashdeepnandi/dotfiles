@@ -100,3 +100,8 @@ export PATH="$HOME/bb-tools/bin:$PATH"
 export PATH="/home/akash/bb/tools/bin:/home/akash/bb/go-tools/bin:$PATH"
 eval "$(uv generate-shell-completion zsh)"
 eval "$(uvx --generate-shell-completion zsh)"
+
+
+# Generated for pdtm. Do not edit.
+export PATH=$PATH:/home/akash/.pdtm/go/bin
+

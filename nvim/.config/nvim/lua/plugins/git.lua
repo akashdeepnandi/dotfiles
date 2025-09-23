@@ -39,7 +39,6 @@ return {
           nmap('gu', '<cmd>Gitsigns reset_hunk<cr>', 'Git Reste Hunk')
           nmap('gp', '<cmd>Gitsigns preview_hunk<cr>', 'Git Preview Hunk')
           nmap('gx', '<cmd>Gitsigns diffthis<cr>', 'Git Diff')
-          nmap('<leader>g', '<cmd>Git<cr>', 'Open Git')
         end,
       }
     end,
