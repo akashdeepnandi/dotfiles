@@ -105,3 +105,7 @@ eval "$(uvx --generate-shell-completion zsh)"
 # Generated for pdtm. Do not edit.
 export PATH=$PATH:/home/akash/.pdtm/go/bin
 
+FPATH="$HOME/.docker/completions:$FPATH"
+autoload -Uz compinit
+compinit
+
