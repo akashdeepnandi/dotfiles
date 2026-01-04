@@ -1,0 +1,58 @@
+#!/bin/sh
+
+# basic settings
+# enforce tiled layout by default
+# force tiled layout on all desktops on all monitors
+
+
+bspc config border_width 1
+bspc config window_gap 15
+bspc config split_ratio 0.52
+bspc config focus_follows_pointer true
+
+# sane defaults
+bspc config single_monocle true
+bspc config gapless_monocle false
+
+# floating rules
+bspc rule -a Ulauncher state=floating center=true
+bspc rule -a Pavucontrol state=floating
+bspc rule -a Blueman-manager state=floating
+bspc rule -a Gnome-calculator state=floating
+
+# monitor layout (arandr)
+/home/akash/.config/bspwm/monitors.sh &
+sleep 1
+
+# monitor detection & desktop assignment
+for m in $(bspc query -M); do
+	bspc monitor "$m" -d I II III IV V
+	for d in $(bspc query -D -m "$m"); do
+		bspc desktop "$d" -l tiled
+	done
+done
+# for m in $(bspc query -M); do
+# done
+
+# autostart core services
+pgrep -x sxhkd >/dev/null || sxhkd &
+pgrep -x nm-applet >/dev/null || nm-applet &
+pgrep -x blueman-applet >/dev/null || blueman-applet &
+pgrep -x picom >/dev/null || picom &
+
+
+# polybar on all monitors (idempotent)
+for m in $(polybar --list-monitors | cut -d: -f1); do
+  pgrep -f "polybar.*$m.*main" >/dev/null || MONITOR=$m polybar main &
+done
+
+
+
+# wallpaper
+feh --bg-scale "/home/akash/.config/awesome/yggdrasil.png" &
+
+# cursor + X defaults
+xsetroot -cursor_name left_ptr
+
+
+

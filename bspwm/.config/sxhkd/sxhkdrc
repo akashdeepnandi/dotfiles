@@ -1,0 +1,69 @@
+# reload sxhkd
+super + Escape
+	pkill -USR1 -x sxhkd
+
+# terminal
+super + Return
+	alacritty
+
+# terminal
+super + b
+	brave-browser
+
+# close window
+super + q
+	bspc node -c
+
+# focus window
+super + {h,j,k,l}
+	bspc node -f {west,south,north,east}
+
+# move window
+super + shift + {h,j,k,l}
+	bspc node -s {west,south,north,east}
+
+# move focus between desktops
+super + {1-5}
+	bspc desktop -f focused:^{1-5}
+
+# send window to desktop
+super + shift + {1-5}
+	bspc node -d ^{1-5} --follow
+
+# resize focused window
+super + alt + {h,j,k,l}
+	bspc node -z {left -20 0,down 0 20,up 0 -20,right 20 0}
+
+# toggle floating (reliable)
+super + space
+	bspc node -t floating || bspc node -t tiled
+
+# # toggle fullscreen (reliable)
+# super + f
+# 	bspc node -t fullscreen || bspc node -t tiled
+
+# toggle monocle (WM-style fullscreen)
+# per-window pseudo fullscreen (correct)
+# super + f
+# 	bspc node -t floating && bspc node -t pseudo_tiled || bspc node -t tiled
+
+super + shift + {comma,period}
+	bspc node -m {prev,next} --follow
+
+
+# logout (end user session)
+super + shift + q
+	loginctl terminate-user $USER
+
+# shutdown
+super + shift + p
+	systemctl poweroff
+
+# volume up
+XF86AudioRaiseVolume
+	pactl set-sink-volume @DEFAULT_SINK@ +2%
+
+# volume down
+XF86AudioLowerVolume
+	pactl set-sink-volume @DEFAULT_SINK@ -2%
+

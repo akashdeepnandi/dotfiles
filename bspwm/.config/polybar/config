@@ -1,0 +1,86 @@
+[colors]
+bg = #1e1e2e
+fg = #cdd6f4
+accent = #89b4fa
+muted = #6c7086
+
+[bar/main]
+monitor = ${env:MONITOR}
+background = ${colors.bg}
+foreground = ${colors.fg}
+height = 30
+padding-left = 2
+padding-right = 2
+module-margin = 2
+font-0 = JetBrainsMono Nerd Font:size=10;2
+width = 100%
+modules-left = workspaces
+enable-ipc = true
+tray-position = right
+tray-padding = 2
+modules-center = title
+modules-right = clock cpu memory volume network
+
+[module/network]
+label-connected-foreground = ${colors.fg}
+label-disconnected-foreground = ${colors.muted}
+type = internal/network
+interface = wlp6s0
+interval = 3
+label-connected = %essid% ⬆%upspeed% ⬇%downspeed%
+label-disconnected = no-net
+
+[module/volume]
+label-volume-foreground = ${colors.fg}
+label-muted-foreground = ${colors.muted}
+type = internal/pulseaudio
+label-volume = VOL %percentage%%
+label-muted = MUTED
+
+[module/title]
+label-foreground = ${colors.fg}
+type = internal/xwindow
+label = %title%
+label-maxlen = 60
+label-empty = bspwm
+
+[module/cpu]
+label-foreground = ${colors.fg}
+type = internal/cpu
+interval = 2
+label = CPU %percentage%%
+
+[module/memory]
+label-foreground = ${colors.fg}
+type = internal/memory
+interval = 5
+label = RAM %percentage_used%%
+
+[module/clock]
+label-foreground = ${colors.accent}
+type = internal/date
+interval = 60
+date = %Y-%m-%d
+time = %H:%M
+label = %date% %time%
+
+[module/workspaces]
+type = internal/bspwm
+label-focused = %name%
+label-focused-padding = 2
+label-focused-margin = 1
+label-focused-foreground = ${colors.accent}
+label-occupied = %name%
+label-occupied-padding = 2
+label-occupied-margin = 1
+label-occupied-foreground = ${colors.fg}
+label-empty = %name%
+label-empty-padding = 2
+label-empty-margin = 1
+label-empty-foreground = ${colors.muted}
+label-focused-background = ${colors.bg}
+label-occupied-background = ${colors.bg}
+label-empty-background = ${colors.bg}
+label-focused-underline = ${colors.accent}
+label-occupied-underline = ${colors.accent}
+
