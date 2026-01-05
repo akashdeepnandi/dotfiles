@@ -1,91 +1,127 @@
-# reload sxhkd
+# [CORE] Reload sxhkd
+# desc: Reload keybindings without restarting the WM
 super + Escape
 	pkill -USR1 -x sxhkd
 
-# terminal
-super + Return
-	alacritty
+# [CORE] Restart bspwm
+# desc: Soft-restart the window manager
+super + shift + r
+	bspc wm -r
 
-# terminal
-super + b
-	brave-browser
-
-# close window
-super + q
-	bspc node -c
-
-# focus window
-super + {h,j,k,l}
-	bspc node -f {west,south,north,east}
-
-# move window
-super + shift + {h,j,k,l}
-	bspc node -s {west,south,north,east}
-
-# move focus between desktops
-super + {1-5}
-	bspc desktop -f focused:^{1-5}
-
-# send window to desktop
-super + shift + {1-5}
-	bspc node -d ^{1-5} --follow
-
-# resize focused window
-super + alt + {h,j,k,l}
-	bspc node -z {left -20 0,down 0 20,up 0 -20,right 20 0}
-
-# Focus next / previous window (works in fullscreen and tiled)
-super + Tab
-	bspc node -f next.local
-
-super + shift + Tab
-	bspc node -f prev.local
-
-# toggle floating (reliable)
-super + space
-	bspc node -t floating || bspc node -t tiled
-
-# # toggle fullscreen (reliable)
-# super + f
-# 	bspc node -t fullscreen || bspc node -t tiled
-
-# toggle monocle (WM-style fullscreen)
-# per-window pseudo fullscreen (correct)
-# super + f
-# 	bspc node -t floating && bspc node -t pseudo_tiled || bspc node -t tiled
-
-super + f
-  bspc node -t '~fullscreen'
-	# ~/.config/bspwm/fullscreen-toggle.sh
-
-super + shift + {comma,period}
-	bspc node -m {prev,next} --follow
-
-
-# logout (end user session)
+# [CORE] Logout user session
+# desc: Terminate the current user session
 super + shift + q
 	loginctl terminate-user $USER
 
-# shutdown
+# [CORE] Power off system
+# desc: Shut down the system immediately
 super + shift + p
 	systemctl poweroff
 
-# volume up
-XF86AudioRaiseVolume
-	pactl set-sink-volume @DEFAULT_SINK@ +2%
+# [CORE] Reset window layout
+# desc: Force all windows back to tiled layout
+super + shift + t
+	~/.config/bspwm/reset-layout.sh
 
-# volume down
-XF86AudioLowerVolume
-	pactl set-sink-volume @DEFAULT_SINK@ -2%
+# [CORE] Restart polybar
+# desc: Restart polybar on all monitors
+super + shift + b
+	~/.config/bspwm/reset-polybar.sh
 
-# Rofi launcher
+
+# [LAUNCHERS] Open terminal
+# desc: Launch default terminal emulator
+super + Return
+	alacritty
+
+# [LAUNCHERS] Open browser
+# desc: Launch Brave browser
+super + b
+	brave-browser
+
+# [LAUNCHERS] App launcher
+# desc: Launch rofi application menu
 super + d
 	rofi -show drun
 
+# [LAUNCHERS] Window switcher
+# desc: Launch rofi window switcher
 super + w
 	rofi -show window
 
-# Power menu
+# [LAUNCHERS] Power menu
+# desc: Launch rofi power menu
 super + shift + e
 	~/.config/rofi/powermenu.sh
+
+
+# [WINDOW MANAGEMENT] Close window
+# desc: Close the focused window
+super + q
+	bspc node -c
+
+# [WINDOW MANAGEMENT] Focus direction
+# desc: Focus window in direction
+super + {h,j,k,l}
+	bspc node -f {west,south,north,east}
+
+# [WINDOW MANAGEMENT] Swap direction
+# desc: Swap window with neighbor in direction
+super + shift + {h,j,k,l}
+	bspc node -s {west,south,north,east}
+
+# [WINDOW MANAGEMENT] Focus next local
+# desc: Focus next window in the current workspace
+super + Tab
+	bspc node -f next.local
+
+# [WINDOW MANAGEMENT] Focus previous local
+# desc: Focus previous window in the current workspace
+super + shift + Tab
+	bspc node -f prev.local
+
+# [WINDOW MANAGEMENT] Switch workspace
+# desc: Focus workspace 1–5 on current monitor
+super + {1-5}
+	bspc desktop -f focused:^{1-5}
+
+# [WINDOW MANAGEMENT] Move window to workspace
+# desc: Move window to workspace 1–5 and follow
+super + shift + {1-5}
+	bspc node -d ^{1-5} --follow
+
+# [WINDOW MANAGEMENT] Move window to monitor
+# desc: Move window to previous or next monitor
+super + shift + {comma,period}
+	bspc node -m {prev,next} --follow
+
+# [WINDOW MANAGEMENT] Resize window
+# desc: Resize window in direction
+super + alt + {h,j,k,l}
+	bspc node -z {left -20 0,down 0 20,up 0 -20,right 20 0}
+
+# [WINDOW MANAGEMENT] Toggle floating
+# desc: Toggle floating or tiled state
+super + space
+	bspc node -t floating || bspc node -t tiled
+
+# [WINDOW MANAGEMENT] Toggle fullscreen
+# desc: Toggle fullscreen state
+super + f
+	bspc node -t '~fullscreen'
+
+# [UTILITIES] Volume up
+# desc: Increase system volume
+XF86AudioRaiseVolume
+	pactl set-sink-volume @DEFAULT_SINK@ +2%
+
+# [UTILITIES] Volume down
+# desc: Decrease system volume
+XF86AudioLowerVolume
+	pactl set-sink-volume @DEFAULT_SINK@ -2%
+
+# [UTILITIES] Keyboard Shortcuts
+# desc: Display all configured keyboard bindings
+super + slash
+	~/.config/rofi/keybindings.sh
 
