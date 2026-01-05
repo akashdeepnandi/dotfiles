@@ -1,86 +1,218 @@
-[colors]
-bg = #1e1e2e
-fg = #cdd6f4
-accent = #89b4fa
-muted = #6c7086
+; -------------------------
+; SPACING TOKENS
+; -------------------------
+[spacing]
+pad-xs = 1
+pad-sm = 2
+pad-md = 3
+pad-lg = 4
 
+mar-xs = 1
+mar-sm = 2
+mar-md = 3
+
+; -------------------------
+; COLOR TOKENS
+; -------------------------
+[colors]
+; base
+bg = ${env:COLOR_BG}
+fg = ${env:COLOR_FG}
+muted = ${env:COLOR_MUTED}
+
+; accents
+accent = ${env:COLOR_ACCENT}
+accent-alt = ${env:COLOR_ACCENT_ALT}
+warn = ${env:COLOR_ACCENT_WARN}
+crit = ${env:COLOR_ACCENT_CRIT}
+
+; surfaces
+surface-0 = ${env:COLOR_SURFACE_0}
+surface-1 = ${env:COLOR_SURFACE_1}
+surface-2 = ${env:COLOR_SURFACE_2}
+surface-active = ${env:COLOR_SURFACE_ACTIVE}
+
+; borders / shadows
+border = ${env:COLOR_BORDER}
+shadow = ${env:COLOR_SHADOW}
+
+; on-surface text
+on-surface-dark = ${env:COLOR_ON_SURFACE_DARK}
+on-surface-light = ${env:COLOR_ON_SURFACE_LIGHT}
+
+
+; -------------------------
+; GLOBALS / HYGIENE
+; -------------------------
+[settings]
+screenchange-reload = true
+pseudo-transparency = false
+
+; -------------------------
+; BAR
+; -------------------------
 [bar/main]
 monitor = ${env:MONITOR}
+width = 100%
+height = 30
+
 background = ${colors.bg}
 foreground = ${colors.fg}
-height = 30
-padding-left = 2
-padding-right = 2
-module-margin = 2
+
 font-0 = JetBrainsMono Nerd Font:size=10;2
-width = 100%
-modules-left = workspaces
+
+modules-left = workspaces network
+modules-center = title 
+modules-right = cpu memory volume brightness clock
+
 tray-position = right
 tray-padding = 2
-modules-center = title
-modules-right = clock cpu memory volume network
 wm-restack = bspwm
 
+padding-left = ${spacing.pad-sm}
+padding-right = ${spacing.pad-sm}
+module-margin = 0
+
+; -------------------------
+; MODULES
+; -------------------------
+
 [module/network]
-label-connected-foreground = ${colors.fg}
-label-disconnected-foreground = ${colors.muted}
 type = internal/network
 interface = wlp6s0
 interval = 3
+
 label-connected = %essid% ⬆%upspeed% ⬇%downspeed%
-label-disconnected = no-net
+label-disconnected = 󰖪  offline
+
+format-connected = <label-connected>
+format-connected-background = ${colors.surface-1}
+format-connected-foreground = ${colors.on-surface-light}
+
+format-disconnected = <label-disconnected>
+format-disconnected-background = ${colors.surface-0}
+format-disconnected-foreground = ${colors.muted}
+
+format-connected-padding = ${spacing.pad-lg}
+format-connected-margin  = ${spacing.mar-sm}
+
+format-disconnected-padding = ${spacing.pad-lg}
+format-disconnected-margin  = ${spacing.mar-sm}
 
 [module/volume]
-label-volume-foreground = ${colors.fg}
-label-muted-foreground = ${colors.muted}
 type = internal/pulseaudio
+
 label-volume = VOL %percentage%%
 label-muted = MUTED
 
+format-volume = <label-volume>
+format-volume-background = ${colors.surface-1}
+format-volume-foreground = ${colors.on-surface-light}
+
+format-muted = <label-muted>
+format-muted-background = ${colors.surface-0}
+format-muted-foreground = ${colors.muted}
+
+format-volume-padding = ${spacing.pad-md}
+format-volume-margin  = ${spacing.mar-xs}
+
+format-muted-padding = ${spacing.pad-md}
+format-muted-margin  = ${spacing.mar-xs}
+
+
 [module/title]
-label-foreground = ${colors.fg}
 type = internal/xwindow
 label = %title%
 label-maxlen = 60
 label-empty = bspwm
+label-foreground = ${colors.fg}
 
 [module/cpu]
-label-foreground = ${colors.fg}
 type = internal/cpu
 interval = 2
 label = CPU %percentage%%
 
+format = <label>
+format-background = ${colors.surface-1}
+format-foreground = ${colors.on-surface-light}
+
+format-padding = ${spacing.pad-md}
+format-margin  = ${spacing.mar-xs}
+
 [module/memory]
-label-foreground = ${colors.fg}
 type = internal/memory
 interval = 5
 label = RAM %percentage_used%%
 
+format = <label>
+
+format-background = ${colors.surface-1}
+format-foreground = ${colors.on-surface-light}
+
+format-padding = ${spacing.pad-md}
+format-margin  = ${spacing.mar-xs}
+
+
 [module/clock]
-label-foreground = ${colors.accent}
 type = internal/date
 interval = 60
-date = %Y-%m-%d
+
 time = %H:%M
-label = %date% %time%
+date = %A, %d %b
+label = %time%  %date%
+
+format = <label>
+
+; high-contrast pill
+format-background = ${colors.accent}
+format-foreground = ${colors.bg}
+
+; optional: slight separation from bar
+format-padding = ${spacing.pad-md}
+format-margin  = ${spacing.mar-xs}
 
 [module/workspaces]
 type = internal/bspwm
+
+; focused workspace — primary pill
 label-focused = %name%
-label-focused-padding = 2
-label-focused-margin = 1
-label-focused-foreground = ${colors.accent}
+label-focused-background = ${colors.surface-active}
+label-focused-foreground = ${colors.on-surface-dark}
+
+; occupied workspace — secondary pill
 label-occupied = %name%
-label-occupied-padding = 2
-label-occupied-margin = 1
-label-occupied-foreground = ${colors.fg}
+label-occupied-background = ${colors.surface-1}
+label-occupied-foreground = ${colors.on-surface-light}
+
+; empty workspace — de-emphasized
 label-empty = %name%
-label-empty-padding = 2
-label-empty-margin = 1
+label-empty-background = ${colors.surface-0}
 label-empty-foreground = ${colors.muted}
-label-focused-background = ${colors.bg}
-label-occupied-background = ${colors.bg}
-label-empty-background = ${colors.bg}
-label-focused-underline = ${colors.accent}
-label-occupied-underline = ${colors.accent}
+
+label-focused-padding   = ${spacing.pad-md}
+label-focused-margin    = ${spacing.mar-xs}
+
+label-occupied-padding  = ${spacing.pad-md}
+label-occupied-margin   = ${spacing.mar-xs}
+
+label-empty-padding     = ${spacing.pad-md}
+label-empty-margin      = ${spacing.mar-xs}
+
+
+[module/brightness]
+type = custom/script
+exec = brightnessctl get
+interval = 1
+
+label = BRI %output%%
+
+; pill-style surface (non-active)
+format = <label>
+format-padding = 3
+format-margin = 1
+format-background = ${colors.surface-1}
+format-foreground = ${colors.on-surface-light}
+
+scroll-up = ~/.config/sxhkd/brightness-ctl.sh up
+scroll-down = ~/.config/sxhkd/brightness-ctl.sh down
 

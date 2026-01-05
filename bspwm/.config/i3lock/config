@@ -1,0 +1,17 @@
+# Smoke test: environment-injected colors
+# Assumes colors.sh already sourced via .xprofile
+
+color=${COLOR_BG}
+ring-color=${COLOR_ACCENT}
+ringver-color=${COLOR_FOCUS}
+ringwrong-color=${COLOR_URGENT}
+
+inside-color=${COLOR_BG}cc
+insidever-color=${COLOR_BG}cc
+insidewrong-color=${COLOR_BG}cc
+
+keyhl-color=${COLOR_ACCENT}
+bshl-color=${COLOR_URGENT}
+
+separator-color=00000000
+

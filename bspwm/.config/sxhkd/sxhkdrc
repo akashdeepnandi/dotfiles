@@ -113,12 +113,12 @@ super + f
 # [UTILITIES] Volume up
 # desc: Increase system volume
 XF86AudioRaiseVolume
-	pactl set-sink-volume @DEFAULT_SINK@ +2%
+	~/.config/sxhkd/volume_notify.sh up
 
 # [UTILITIES] Volume down
 # desc: Decrease system volume
 XF86AudioLowerVolume
-	pactl set-sink-volume @DEFAULT_SINK@ -2%
+	~/.config/sxhkd/volume_notify.sh down
 
 # [UTILITIES] Keyboard Shortcuts
 # desc: Display all configured keyboard bindings

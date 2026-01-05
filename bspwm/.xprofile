@@ -1,0 +1,3 @@
+# Load global theme variables for X session
+. "$HOME/.config/themer/colors.sh"
+

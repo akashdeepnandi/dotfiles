@@ -4,9 +4,117 @@ configuration {
     drun-display-format: "{name}";
     sidebar-mode: false;
     terminal: "alacritty";
-    font: "monospace 11";
+    font: "JetBrainsMono Nerd Font 11";
     location: 0;
     anchor: north;
-    width: 50;
+}
+
+/* -------------------------
+ * Colors (authoritative)
+ * ------------------------- */
+@import "colors.rasi"
+
+* {
+    /* Row backgrounds (fix beige + alternates) */
+    normal-background:           @bg;
+    alternate-normal-background: @bg;
+
+    active-background:           @bg;
+    alternate-active-background: @bg;
+
+    urgent-background:           @bg;
+    alternate-urgent-background: @bg;
+
+    /* Row foregrounds */
+    normal-foreground:           @fg;
+    alternate-normal-foreground: @fg;
+
+    /* Selection contrast */
+    surface1: @surface2;
+}
+
+/* -------------------------
+ * Window
+ * ------------------------- */
+window {
+    background-color: @bg;
+    text-color: @fg;
+
+    padding: 8px;
+
+    border: 1px;
+    border-color: @border;
+    border-radius: 10px;
+
+    /* Width control (rofi 1.7.x–safe) */
+    width: 60ch;
+}
+
+/* -------------------------
+ * List
+ * ------------------------- */
+listview {
+    background-color: @bg;
+    padding: 0px;
+    lines: 6;
+}
+
+/* -------------------------
+ * Elements
+ * ------------------------- */
+element {
+    background-color: transparent;
+    text-color: @fg;
+
+    padding: 6px 8px;
+    border-radius: 6px;
+}
+
+/* Selected states */
+element selected,
+element selected.normal {
+    background-color: @surface1;
+}
+
+element selected.active {
+    background-color: @surface2;
+}
+
+element selected.urgent {
+    background-color: @accent;
+    text-color: @bg;
+}
+
+/* -------------------------
+ * Icons
+ * ------------------------- */
+element-icon {
+    size: 20px;
+    margin: 0px 8px 0px 0px;
+}
+
+element-text {
+    vertical-align: 0.5;
+}
+
+/* -------------------------
+ * Input
+ * ------------------------- */
+inputbar {
+    background-color: @bg;
+    padding: 6px 8px;
+
+    border: 1px;
+    border-color: @surface2;
+}
+
+entry {
+    text-color: @fg;
+    caret-color: @accent;
+}
+
+prompt,
+textbox-prompt-colon {
+    text-color: @muted;
 }
 

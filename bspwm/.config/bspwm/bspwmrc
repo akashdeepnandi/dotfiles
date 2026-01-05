@@ -26,7 +26,7 @@ sleep 1
 
 # monitor detection & desktop assignment
 for m in $(bspc query -M); do
-	bspc monitor "$m" -d I II III IV V
+	bspc monitor "$m" -d 1 2 3 4 5 6
 	for d in $(bspc query -D -m "$m"); do
 		bspc desktop "$d" -l tiled
 	done
@@ -59,18 +59,22 @@ xset dpms 660 660 720
 
 
 
-# polybar on all monitors (idempotent)
+# polybar on all monitors (idempotent, with theming)
+. ~/.config/themer/colors.sh
+
 for m in $(polybar --list-monitors | cut -d: -f1); do
-  pgrep -f "polybar.*$m.*main" >/dev/null || MONITOR=$m polybar main &
+  pgrep -f "polybar.*$m.*main" >/dev/null || \
+  MONITOR="$m" \
+  polybar main &
 done
 
-
-
 # wallpaper
-feh --bg-scale "/home/akash/.config/awesome/yggdrasil.png" &
+feh --bg-scale "$HOME/.config/bspwm/terrain.jpg" &
 
 # cursor + X defaults
 xsetroot -cursor_name left_ptr
 
+# rofi colors
+"$HOME/.config/rofi/rofi-color-generator.sh"
 
 

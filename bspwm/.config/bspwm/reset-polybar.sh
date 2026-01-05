@@ -6,7 +6,11 @@ pkill -x polybar || true
 # give X a moment to release resources
 sleep 0.2
 
+. ~/.config/themer/colors.sh
+
+
 for m in $(polybar --list-monitors | cut -d: -f1); do
-  MONITOR=$m polybar main &
+  MONITOR="$m" \
+  polybar main &
 done
 
