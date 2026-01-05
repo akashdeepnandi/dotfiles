@@ -9,6 +9,8 @@ bspc config border_width 1
 bspc config window_gap 15
 bspc config split_ratio 0.52
 bspc config focus_follows_pointer true
+bspc config top_padding 15
+
 
 # sane defaults
 bspc config single_monocle true
