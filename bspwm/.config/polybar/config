@@ -15,11 +15,11 @@ module-margin = 2
 font-0 = JetBrainsMono Nerd Font:size=10;2
 width = 100%
 modules-left = workspaces
-enable-ipc = true
 tray-position = right
 tray-padding = 2
 modules-center = title
 modules-right = clock cpu memory volume network
+wm-restack = bspwm
 
 [module/network]
 label-connected-foreground = ${colors.fg}

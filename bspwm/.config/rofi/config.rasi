@@ -1,0 +1,12 @@
+configuration {
+    modi: "drun,run,window";
+    show-icons: true;
+    drun-display-format: "{name}";
+    sidebar-mode: false;
+    terminal: "alacritty";
+    font: "monospace 11";
+    location: 0;
+    anchor: north;
+    width: 50;
+}
+

@@ -34,6 +34,13 @@ super + shift + {1-5}
 super + alt + {h,j,k,l}
 	bspc node -z {left -20 0,down 0 20,up 0 -20,right 20 0}
 
+# Focus next / previous window (works in fullscreen and tiled)
+super + Tab
+	bspc node -f next.local
+
+super + shift + Tab
+	bspc node -f prev.local
+
 # toggle floating (reliable)
 super + space
 	bspc node -t floating || bspc node -t tiled
@@ -46,6 +53,10 @@ super + space
 # per-window pseudo fullscreen (correct)
 # super + f
 # 	bspc node -t floating && bspc node -t pseudo_tiled || bspc node -t tiled
+
+super + f
+  bspc node -t '~fullscreen'
+	# ~/.config/bspwm/fullscreen-toggle.sh
 
 super + shift + {comma,period}
 	bspc node -m {prev,next} --follow
@@ -66,4 +77,15 @@ XF86AudioRaiseVolume
 # volume down
 XF86AudioLowerVolume
 	pactl set-sink-volume @DEFAULT_SINK@ -2%
+
+# Rofi launcher
+super + d
+	rofi -show drun
+
+super + w
+	rofi -show window
+
+# Power menu
+super + shift + e
+	~/.config/rofi/powermenu.sh
 
