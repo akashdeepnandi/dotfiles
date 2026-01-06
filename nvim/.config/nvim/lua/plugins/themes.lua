@@ -5,6 +5,12 @@ return {
     priority = 1000,
     config = function()
       -- code
+      require('catppuccin').setup {
+        transparent_background = true,
+        float = {
+          transparent = true, -- enable transparent floating windows
+        },
+      }
       vim.cmd.colorscheme 'catppuccin-macchiato'
       vim.cmd.hi 'Comment gui=none'
     end,

@@ -58,10 +58,11 @@ height = 30
 background = ${colors.bg}
 foreground = ${colors.fg}
 
-font-0 = JetBrainsMono Nerd Font:size=10;2
+font-0 = Hasklug Nerd Font Mono:style=Regular:size=10;2
+font-1 = Hasklug Nerd Font Mono:style=Bold:size=10;2
+font-2 = Hasklug Nerd Font Mono:style=Regular:size=16;2
 
 modules-left = workspaces title network
-module-center = title
 modules-right = cpu memory volume brightness clock
 
 tray-position = center
@@ -123,11 +124,15 @@ format-muted-margin  = ${spacing.mar-xs}
 
 
 [module/title]
-type = internal/xwindow
-label = %title%
-label-maxlen = 60
-label-empty = bspwm
-label-foreground = ${colors.fg}
+type = custom/script
+exec = ~/.config/polybar/window-title.sh
+interval = 0.5
+format = <label>
+label = %{T2}%output%
+
+format-background = ${colors.accent-alt}
+format-foreground = ${colors.bg}
+format-padding = ${spacing.pad-xs}
 
 [module/cpu]
 type = internal/cpu
@@ -138,7 +143,7 @@ format = <label>
 format-background = ${colors.surface-1}
 format-foreground = ${colors.on-surface-light}
 
-format-padding = ${spacing.pad-md}
+format-padding = ${spacing.pad-xs}
 format-margin  = ${spacing.mar-xs}
 
 [module/memory]
@@ -151,7 +156,7 @@ format = <label>
 format-background = ${colors.surface-1}
 format-foreground = ${colors.on-surface-light}
 
-format-padding = ${spacing.pad-md}
+format-padding = ${spacing.pad-xs}
 format-margin  = ${spacing.mar-xs}
 
 
@@ -161,7 +166,8 @@ interval = 60
 
 time = %H:%M
 date = %A, %d %b
-label = %time%  %date%
+label = %{T2}%time% %date%
+
 
 format = <label>
 
@@ -170,7 +176,7 @@ format-background = ${colors.accent}
 format-foreground = ${colors.bg}
 
 ; optional: slight separation from bar
-format-padding = ${spacing.pad-md}
+format-padding = ${spacing.pad-xs}
 format-margin  = ${spacing.mar-xs}
 
 [module/workspaces]
@@ -191,13 +197,13 @@ label-empty = %name%
 label-empty-background = ${colors.surface-0}
 label-empty-foreground = ${colors.muted}
 
-label-focused-padding   = ${spacing.pad-md}
+label-focused-padding   = ${spacing.pad-sm}
 label-focused-margin    = ${spacing.mar-xs}
 
-label-occupied-padding  = ${spacing.pad-md}
+label-occupied-padding  = ${spacing.pad-sm}
 label-occupied-margin   = ${spacing.mar-xs}
 
-label-empty-padding     = ${spacing.pad-md}
+label-empty-padding     = ${spacing.pad-sm}
 label-empty-margin      = ${spacing.mar-xs}
 
 
