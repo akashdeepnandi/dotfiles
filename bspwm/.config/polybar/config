@@ -105,7 +105,7 @@ format-disconnected-margin  = ${spacing.mar-sm}
 [module/volume]
 type = internal/pulseaudio
 
-label-volume = VOL %percentage%%
+label-volume = 󰕾 %percentage%%
 label-muted = MUTED
 
 format-volume = <label-volume>
@@ -116,10 +116,10 @@ format-muted = <label-muted>
 format-muted-background = ${colors.surface-0}
 format-muted-foreground = ${colors.muted}
 
-format-volume-padding = ${spacing.pad-md}
+format-volume-padding = ${spacing.pad-xs}
 format-volume-margin  = ${spacing.mar-xs}
 
-format-muted-padding = ${spacing.pad-md}
+format-muted-padding = ${spacing.pad-xs}
 format-muted-margin  = ${spacing.mar-xs}
 
 
@@ -135,11 +135,12 @@ format-foreground = ${colors.bg}
 format-padding = ${spacing.pad-xs}
 
 [module/cpu]
-type = internal/cpu
-interval = 2
-label = CPU %percentage%%
-
+type = custom/script
+exec = ~/.config/polybar/cpu-usage.sh
+interval = 1
 format = <label>
+label = 󰍛 %output%%
+
 format-background = ${colors.surface-1}
 format-foreground = ${colors.on-surface-light}
 
@@ -149,7 +150,7 @@ format-margin  = ${spacing.mar-xs}
 [module/memory]
 type = internal/memory
 interval = 5
-label = RAM %percentage_used%%
+label = 󰘚 %percentage_used%%
 
 format = <label>
 
@@ -212,7 +213,7 @@ type = custom/script
 exec = brightnessctl get
 interval = 1
 
-label = BRI %output%%
+label = 󰃠 %output%%
 
 ; pill-style surface (non-active)
 format = <label>
