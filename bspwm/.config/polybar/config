@@ -62,8 +62,8 @@ font-0 = Hasklug Nerd Font Mono:style=Regular:size=10;2
 font-1 = Hasklug Nerd Font Mono:style=Bold:size=10;2
 font-2 = Hasklug Nerd Font Mono:style=Regular:size=16;2
 
-modules-left = workspaces title 
-modules-right = network cpu memory volume brightness clock
+modules-left = workspaces cpu memory title 
+modules-right = network brightness volume clock
 
 tray-position = center
 tray-padding = 2
@@ -134,6 +134,7 @@ label = %{T2}%output%
 format-background = ${colors.accent-alt}
 format-foreground = ${colors.bg}
 format-padding = ${spacing.pad-xs}
+format-margin = ${spacing.mar-xs}
 
 [module/cpu]
 type = custom/script
