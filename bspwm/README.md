@@ -41,4 +41,9 @@ Visual Consistency - Same colors, font rendering, highlights, focuses, etc
 TERMINAL RESOLUTION 
 i3lock - update styling and everywhere it is used
 polybar floating - DONE
+polybar -
+network
+brightness
+clock
+
 fix brightness control value

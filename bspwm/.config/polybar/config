@@ -62,8 +62,8 @@ font-0 = Hasklug Nerd Font Mono:style=Regular:size=10;2
 font-1 = Hasklug Nerd Font Mono:style=Bold:size=10;2
 font-2 = Hasklug Nerd Font Mono:style=Regular:size=16;2
 
-modules-left = workspaces title network
-modules-right = cpu memory volume brightness clock
+modules-left = workspaces title 
+modules-right = network cpu memory volume brightness clock
 
 tray-position = center
 tray-padding = 2
@@ -85,22 +85,23 @@ type = internal/network
 interface = wlp6s0
 interval = 3
 
-label-connected = %essid% ⬆%upspeed% ⬇%downspeed%
-label-disconnected = 󰖪  offline
+
+label-connected = %essid% 󰁝%upspeed% 󰁅%downspeed%
+label-disconnected = 󰖪 offline
 
 format-connected = <label-connected>
-format-connected-background = ${colors.surface-1}
-format-connected-foreground = ${colors.on-surface-light}
+format-connected-background = ${colors.warn}
+format-connected-foreground = ${colors.bg}
 
 format-disconnected = <label-disconnected>
 format-disconnected-background = ${colors.surface-0}
 format-disconnected-foreground = ${colors.muted}
 
-format-connected-padding = ${spacing.pad-lg}
-format-connected-margin  = ${spacing.mar-sm}
+format-connected-padding = ${spacing.pad-sm}
+format-connected-margin  = ${spacing.mar-xs}
 
-format-disconnected-padding = ${spacing.pad-lg}
-format-disconnected-margin  = ${spacing.mar-sm}
+format-disconnected-padding = ${spacing.pad-sm}
+format-disconnected-margin  = ${spacing.mar-xs}
 
 [module/volume]
 type = internal/pulseaudio
