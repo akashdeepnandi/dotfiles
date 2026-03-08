@@ -58,9 +58,10 @@ height = 30
 background = ${colors.bg}
 foreground = ${colors.fg}
 
-font-0 = Hasklug Nerd Font Mono:style=Regular:size=10;2
-font-1 = Hasklug Nerd Font Mono:style=Bold:size=10;2
-font-2 = Hasklug Nerd Font Mono:style=Regular:size=16;2
+font-0 = MesloLGS Nerd Font Mono:style=Regular:size=10;2
+font-1 = MesloLGS Nerd Font Mono:style=Bold:size=10;2
+font-2 = MesloLGS Nerd Font Mono:style=Regular:size=16;2
+font-3 = FontAwesome:style=Regular:size=14;2
 
 modules-left = workspaces cpu memory title 
 modules-right = network brightness volume clock
@@ -140,8 +141,9 @@ format-margin = ${spacing.mar-xs}
 type = custom/script
 exec = ~/.config/polybar/cpu-usage.sh
 interval = 1
+format-prefix = " "
 format = <label>
-label = 󰍛 %output%%
+label =  %output%%
 
 format-background = ${colors.surface-1}
 format-foreground = ${colors.on-surface-light}
@@ -152,7 +154,9 @@ format-margin  = ${spacing.mar-xs}
 [module/memory]
 type = internal/memory
 interval = 5
-label = 󰘚 %percentage_used%%
+format-prefix = " "
+format-active-font = 4
+label = %percentage_used%%
 
 format = <label>
 
@@ -165,11 +169,11 @@ format-margin  = ${spacing.mar-xs}
 
 [module/clock]
 type = internal/date
-interval = 60
+interval = 1
 
-time = %H:%M
+time = %H:%M:%S
 date = %A, %d %b
-label = %{T2}%time% %date%
+label = %{T2}󰥔 %time% %date%
 
 
 format = <label>

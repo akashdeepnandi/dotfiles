@@ -39,9 +39,14 @@ super + Return
 super + b
 	brave-browser
 
+# [LAUNCHERS] Open browser
+# desc: Launch Brave browser
+super + f
+	nautilus
+
 # [LAUNCHERS] App launcher
 # desc: Launch rofi application menu
-super + d
+super + slash
 	rofi -show drun
 
 # [LAUNCHERS] Window switcher
@@ -51,9 +56,13 @@ super + w
 
 # [LAUNCHERS] Power menu
 # desc: Launch rofi power menu
-super + shift + e
+super + p
 	~/.config/rofi/powermenu.sh
 
+# [LAUNCHERS] Email
+# desc: Launch rofi power menu
+super + e
+	/opt/BlueMail/bluemail
 
 # [WINDOW MANAGEMENT] Close window
 # desc: Close the focused window
@@ -88,7 +97,7 @@ super + {1-5}
 # [WINDOW MANAGEMENT] Move window to workspace
 # desc: Move window to workspace 1–5 and follow
 super + shift + {1-5}
-	bspc node -d ^{1-5} --follow
+	bspc node -d focused:^{1-5} --follow
 
 # [WINDOW MANAGEMENT] Move window to monitor
 # desc: Move window to previous or next monitor
@@ -122,6 +131,6 @@ XF86AudioLowerVolume
 
 # [UTILITIES] Keyboard Shortcuts
 # desc: Display all configured keyboard bindings
-super + slash
+super + k
 	~/.config/rofi/keybindings.sh
 

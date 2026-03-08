@@ -150,6 +150,12 @@ return {
         filetypes = { 'javascript', 'javascriptreact', 'javascript.jsx', 'typescript', 'typescriptreact', 'typescript.tsx' },
       },
       emmet_ls = {
+        init_options = {
+          includeLanguages = {
+            svelte = 'html',
+            showSuggestionsAsSnippets = true,
+          },
+        },
         filetypes = {
           'astro',
           'css',
@@ -166,6 +172,12 @@ return {
           'templ',
           'typescriptreact',
           'vue',
+        },
+        settings = {
+          emmet = {
+            showExpandedAbbreviation = 'always',
+            showAbbreviationSuggestions = true,
+          },
         },
       },
       --

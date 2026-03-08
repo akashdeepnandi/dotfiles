@@ -41,6 +41,9 @@ pgrep -x sxhkd >/dev/null || sxhkd &
 pgrep -x nm-applet >/dev/null || nm-applet &
 pgrep -x blueman-applet >/dev/null || blueman-applet &
 pgrep -x picom >/dev/null || picom &
+pgrep -x qbittorrent >/dev/null || qbittorrent &
+pgrep -x bluemail > /dev/null || /opt/BlueMail/bluemail --no-sandbox %U &
+
 # Idle lock + DPMS
 pgrep -x xss-lock >/dev/null || xss-lock --transfer-sleep-lock -- i3lock -c 1e1e2e &
 # Suspend after long idle (X11, per-session)
