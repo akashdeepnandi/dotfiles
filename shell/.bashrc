@@ -133,3 +133,11 @@ fi
 export PATH="$HOME/bb-tools/bin:$PATH"
 export PATH="/home/akash/bb/tools/bin:/home/akash/bb/go-tools/bin:$PATH"
 eval "$(uv generate-shell-completion bash)"
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/home/akash/.lmstudio/bin"
+# End of LM Studio CLI section
+
+
+# Added by GDK bootstrap
+eval "$(/home/akash/.local/bin/mise activate bash)"

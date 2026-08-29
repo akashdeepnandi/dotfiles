@@ -1,18 +1,10 @@
-local map = function(mode, shortcut, command, desc)
-  vim.keymap.set(mode, shortcut, command, { noremap = true, silent = true, desc = desc })
-end
+local map = function(mode, shortcut, command, desc) vim.keymap.set(mode, shortcut, command, { noremap = true, silent = true, desc = desc }) end
 
-local nmap = function(shortcut, command, desc)
-  map('n', shortcut, command, desc)
-end
+local nmap = function(shortcut, command, desc) map('n', shortcut, command, desc) end
 
-local vmap = function(shortcut, command, desc)
-  map('v', shortcut, command, desc)
-end
+local vmap = function(shortcut, command, desc) map('v', shortcut, command, desc) end
 
-local nvmap = function(shortcut, command, desc)
-  map({ 'n', 'v' }, shortcut, command, desc)
-end
+local nvmap = function(shortcut, command, desc) map({ 'n', 'v' }, shortcut, command, desc) end
 
 -- Copy and Paste
 -- COPY
@@ -21,14 +13,6 @@ nmap('<leader>y', ':%y+<CR>', 'System Copy Buffer')
 
 -- PASTE
 nvmap('<leader>p', '"+p', 'System Copy Selection')
-
--- nmap('g[', '<cmd>Gitsigns prev_hunk<cr>', 'Git Previous Hunk')
--- nmap('g]', '<cmd>Gitsigns next_hunk<cr>', 'Git Next Hunk')
--- nmap('gb', '<cmd>Gitsigns blame_line<cr>', 'Git Blame')
--- nmap('gu', '<cmd>Gitsigns reset_hunk<cr>', 'Git Reste Hunk')
--- nmap('gp', '<cmd>Gitsigns preview_hunk<cr>', 'Git Preview Hunk')
--- nmap('gx', '<cmd>Gitsigns diffthis<cr>', 'Git Diff')
--- -- nmap("gs", "<cmd>Git log<cr>", "Git log")
 
 nmap('<leader>tn', '<cmd>tabnew<cr>', '[T]ab [N]ew')
 nmap('<leader>tc', '<cmd>tabclose<cr>', '[T]ab [C]lose')
@@ -50,6 +34,7 @@ nmap('<leader>l', '<C-w>l', 'Left Buffer')
 nmap('<leader>o', '<C-w>o', 'Close other Buffers')
 nmap('<leader>c', '<C-w>c', 'Close Buffer')
 nmap('<leader>hc', '<cmd>noh<cr>', 'Clear Highlight')
+vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
 -- Pane Management
 nmap('<C-Up>', ':resize +2<CR>', 'Buffer Increase Width')
@@ -80,11 +65,13 @@ nmap('<leader>lw', '<cmd>set wrap!<CR>', 'Toggle Line Wrap')
 -- Keep last yanked when pasting
 map('v', 'p', '"_dP', 'Keep Last yanked')
 
--- Diagnostic keymaps
-nmap('[d', vim.diagnostic.goto_prev, 'Go to previous diagnostic message')
-nmap(']d', vim.diagnostic.goto_next, 'Go to next diagnostic message')
-nmap('<leader>d', vim.diagnostic.open_float, 'Open floating diagnostic message')
-nmap('<leader>q', vim.diagnostic.setloclist, 'Open diagnostics list')
-nmap('<leader>q', vim.diagnostic.setloclist, 'Open diagnostic [Q]uickfix list')
+vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
+vim.keymap.set('n', '<right>', '<cmd>echo "Use l to move!!"<CR>')
+vim.keymap.set('n', '<up>', '<cmd>echo "Use k to move!!"<CR>')
+vim.keymap.set('n', '<down>', '<cmd>echo "Use j to move!!"<CR>')
 
-nmap('<leader>g', '<cmd>Git<cr>', 'Open Git')
+vim.api.nvim_create_autocmd('TextYankPost', {
+  desc = 'Highlight when yanking (copying) text',
+  group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
+  callback = function() vim.hl.on_yank() end,
+})

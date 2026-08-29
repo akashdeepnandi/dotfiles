@@ -25,3 +25,11 @@ if status is-interactive
 
 end
 status --is-interactive; and ~/.rbenv/bin/rbenv init - fish | source
+
+# Added by LM Studio CLI (lms)
+set -gx PATH $PATH /home/akash/.lmstudio/bin
+# End of LM Studio CLI section
+
+
+# Added by GDK bootstrap
+/home/akash/.local/bin/mise activate fish | source

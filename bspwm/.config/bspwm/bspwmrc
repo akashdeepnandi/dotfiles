@@ -45,27 +45,43 @@ pgrep -x qbittorrent >/dev/null || qbittorrent &
 pgrep -x bluemail > /dev/null || /opt/BlueMail/bluemail --no-sandbox %U &
 
 # Idle lock + DPMS
-pgrep -x xss-lock >/dev/null || xss-lock --transfer-sleep-lock -- i3lock -c 1e1e2e &
-# Suspend after long idle (X11, per-session)
-pgrep -x xautolock >/dev/null || \
-xautolock \
-  -time 30 \
-  -locker "systemctl suspend" \
-  -detectsleep &
+
+pgrep -x xss-lock >/dev/null || \
+xss-lock --transfer-sleep-lock -- i3lock -c 1e1e2e &
+
+pgrep -x xidlehook >/dev/null || \
+xidlehook \
+  --not-when-fullscreen \
+  --not-when-audio \
+  --timer 1800 'i3lock -c 1e1e2e' '' \
+  --timer 3600 'systemctl suspend' '' &
 
 
 
 
 # DPMS timings (seconds)
 # Setting Idle Timeout
-xset s 600
+# xset s 600
 # Setting standby, suspend, off timeouts for screen
-xset dpms 660 660 720
+# xset dpms 660 660 720
 
 
 
 # polybar on all monitors (idempotent, with theming)
 . ~/.config/themer/colors.sh
+
+PRIMARY=$(xrandr --query | grep " primary" | cut -d" " -f1)
+for m in $(polybar --list-monitors | cut -d: -f1); do
+  pgrep -f "polybar.*$m.*main" >/dev/null && continue
+
+  if [ "$m" = "$PRIMARY" ]; then
+    TRAY=center
+  else
+    TRAY=none
+  fi
+
+  MONITOR="$m" TRAY="$TRAY" polybar main &
+done
 
 for m in $(polybar --list-monitors | cut -d: -f1); do
   pgrep -f "polybar.*$m.*main" >/dev/null || \
@@ -82,4 +98,6 @@ xsetroot -cursor_name left_ptr
 # rofi colors
 "$HOME/.config/rofi/rofi-color-generator.sh"
 
-
+# Touchpad setup
+TP=$(xinput list | grep -i touchpad | awk -F'id=' '{print $2}' | cut -f1)
+xinput set-prop "$TP" "libinput Tapping Enabled" 1

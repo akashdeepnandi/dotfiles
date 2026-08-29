@@ -35,9 +35,10 @@ super + Return
 	alacritty
 
 # [LAUNCHERS] Open browser
-# desc: Launch Brave browser
+# desc: Launch browser
 super + b
-	brave-browser
+	flatpak run app.zen_browser.zen
+	# brave-browser
 
 # [LAUNCHERS] Open browser
 # desc: Launch Brave browser
@@ -51,8 +52,8 @@ super + slash
 
 # [LAUNCHERS] Window switcher
 # desc: Launch rofi window switcher
-super + w
-	rofi -show window
+# super + w
+# 	rofi -show window
 
 # [LAUNCHERS] Power menu
 # desc: Launch rofi power menu
@@ -116,7 +117,7 @@ super + space
 
 # [WINDOW MANAGEMENT] Toggle fullscreen
 # desc: Toggle fullscreen state
-super + f
+super + w
 	bspc node -t '~fullscreen'
 
 # [UTILITIES] Volume up

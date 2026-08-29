@@ -1,4 +1,4 @@
-local opts = vim.opt
+local opts = vim.o
 
 local options_map = {
   softtabstop = 2,
@@ -16,15 +16,15 @@ local options_map = {
   smartcase = true,
   ruler = true,
   showmatch = true,
-  wildignore = {
-    '*.pyc',
-    '*_build/*',
-    '**/coverage/*',
-    '**/node_modules/*',
-    '**/android/*',
-    '**/ios/*',
-    '**/.git/*',
-  },
+  -- wildignore = {
+  --   '*.pyc',
+  --   '*_build/*',
+  --   '**/coverage/*',
+  --   '**/node_modules/*',
+  --   '**/android/*',
+  --   '**/ios/*',
+  --   '**/.git/*',
+  -- },
   autoread = true,
   -- lazyredraw = true,
   foldenable = true,
@@ -52,7 +52,7 @@ local options_map = {
   signcolumn = 'yes',
   timeoutlen = 300,
   list = true,
-  listchars = { tab = '» ', trail = '·', nbsp = '␣' },
+  -- listchars = { tab = '» ', trail = '·', nbsp = '␣' },
   inccommand = 'split',
   confirm = true,
 }
@@ -71,3 +71,16 @@ vim.wo.colorcolumn = '80'
 
 -- Reset markdown recommended styling
 vim.g.markdown_recommended_style = 0
+vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+
+vim.filetype.add {
+  filename = {
+    ['Dockerfile'] = 'dockerfile',
+    ['dockerfile'] = 'dockerfile',
+    ['compose.yaml'] = 'yaml.docker-compose',
+  },
+  pattern = {
+    ['[Dd]ockerfile.*'] = 'dockerfile',
+    ['docker%-compose.*%.ya?ml'] = 'yaml.docker-compose',
+  },
+}

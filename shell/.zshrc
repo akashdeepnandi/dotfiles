@@ -109,3 +109,20 @@ FPATH="$HOME/.docker/completions:$FPATH"
 autoload -Uz compinit
 compinit
 
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/home/akash/.lmstudio/bin"
+# End of LM Studio CLI section
+
+
+# pnpm
+export PNPM_HOME="/home/akash/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
+
+# opencode
+export PATH=/home/akash/.opencode/bin:$PATH

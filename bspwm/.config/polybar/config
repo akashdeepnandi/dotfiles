@@ -66,7 +66,7 @@ font-3 = FontAwesome:style=Regular:size=14;2
 modules-left = workspaces cpu memory title 
 modules-right = network brightness volume clock
 
-tray-position = center
+tray-position = ${env:TRAY}
 tray-padding = 2
 wm-restack = bspwm
 
