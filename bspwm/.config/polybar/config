@@ -1,0 +1,233 @@
+; -------------------------
+; SPACING TOKENS
+; -------------------------
+[spacing]
+pad-xs = 1
+pad-sm = 2
+pad-md = 3
+pad-lg = 4
+
+mar-xs = 1
+mar-sm = 2
+mar-md = 3
+
+; -------------------------
+; COLOR TOKENS
+; -------------------------
+[colors]
+; base
+bg = ${env:COLOR_BG}
+fg = ${env:COLOR_FG}
+muted = ${env:COLOR_MUTED}
+
+; accents
+accent = ${env:COLOR_ACCENT}
+accent-alt = ${env:COLOR_ACCENT_ALT}
+warn = ${env:COLOR_ACCENT_WARN}
+crit = ${env:COLOR_ACCENT_CRIT}
+
+; surfaces
+surface-0 = ${env:COLOR_SURFACE_0}
+surface-1 = ${env:COLOR_SURFACE_1}
+surface-2 = ${env:COLOR_SURFACE_2}
+surface-active = ${env:COLOR_SURFACE_ACTIVE}
+
+; borders / shadows
+border = ${env:COLOR_BORDER}
+shadow = ${env:COLOR_SHADOW}
+
+; on-surface text
+on-surface-dark = ${env:COLOR_ON_SURFACE_DARK}
+on-surface-light = ${env:COLOR_ON_SURFACE_LIGHT}
+
+
+; -------------------------
+; GLOBALS / HYGIENE
+; -------------------------
+[settings]
+screenchange-reload = true
+pseudo-transparency = false
+
+; -------------------------
+; BAR
+; -------------------------
+[bar/main]
+monitor = ${env:MONITOR}
+height = 30
+
+background = ${colors.bg}
+foreground = ${colors.fg}
+
+font-0 = MesloLGS Nerd Font Mono:style=Regular:size=10;2
+font-1 = MesloLGS Nerd Font Mono:style=Bold:size=10;2
+font-2 = MesloLGS Nerd Font Mono:style=Regular:size=16;2
+font-3 = FontAwesome:style=Regular:size=14;2
+
+modules-left = workspaces cpu memory title 
+modules-right = network brightness volume clock
+
+tray-position = ${env:TRAY}
+tray-padding = 2
+wm-restack = bspwm
+
+padding-left = ${spacing.pad-sm}
+padding-right = ${spacing.pad-sm}
+module-margin = 0
+offset-y = 15
+width = 100%:-28
+offset-x = 14
+
+; -------------------------
+; MODULES
+; -------------------------
+
+[module/network]
+type = internal/network
+interface = wlp6s0
+interval = 3
+
+
+label-connected = %essid% 󰁝%upspeed% 󰁅%downspeed%
+label-disconnected = 󰖪 offline
+
+format-connected = <label-connected>
+format-connected-background = ${colors.warn}
+format-connected-foreground = ${colors.bg}
+
+format-disconnected = <label-disconnected>
+format-disconnected-background = ${colors.surface-0}
+format-disconnected-foreground = ${colors.muted}
+
+format-connected-padding = ${spacing.pad-sm}
+format-connected-margin  = ${spacing.mar-xs}
+
+format-disconnected-padding = ${spacing.pad-sm}
+format-disconnected-margin  = ${spacing.mar-xs}
+
+[module/volume]
+type = internal/pulseaudio
+
+label-volume = 󰕾 %percentage%%
+label-muted = MUTED
+
+format-volume = <label-volume>
+format-volume-background = ${colors.surface-1}
+format-volume-foreground = ${colors.on-surface-light}
+
+format-muted = <label-muted>
+format-muted-background = ${colors.surface-0}
+format-muted-foreground = ${colors.muted}
+
+format-volume-padding = ${spacing.pad-xs}
+format-volume-margin  = ${spacing.mar-xs}
+
+format-muted-padding = ${spacing.pad-xs}
+format-muted-margin  = ${spacing.mar-xs}
+
+
+[module/title]
+type = custom/script
+exec = ~/.config/polybar/window-title.sh
+interval = 0.5
+format = <label>
+label = %{T2}%output%
+
+format-background = ${colors.accent-alt}
+format-foreground = ${colors.bg}
+format-padding = ${spacing.pad-xs}
+format-margin = ${spacing.mar-xs}
+
+[module/cpu]
+type = custom/script
+exec = ~/.config/polybar/cpu-usage.sh
+interval = 1
+format-prefix = " "
+format = <label>
+label =  %output%%
+
+format-background = ${colors.surface-1}
+format-foreground = ${colors.on-surface-light}
+
+format-padding = ${spacing.pad-xs}
+format-margin  = ${spacing.mar-xs}
+
+[module/memory]
+type = internal/memory
+interval = 5
+format-prefix = " "
+format-active-font = 4
+label = %percentage_used%%
+
+format = <label>
+
+format-background = ${colors.surface-1}
+format-foreground = ${colors.on-surface-light}
+
+format-padding = ${spacing.pad-xs}
+format-margin  = ${spacing.mar-xs}
+
+
+[module/clock]
+type = internal/date
+interval = 1
+
+time = %H:%M:%S
+date = %A, %d %b
+label = %{T2}󰥔 %time% %date%
+
+
+format = <label>
+
+; high-contrast pill
+format-background = ${colors.accent}
+format-foreground = ${colors.bg}
+
+; optional: slight separation from bar
+format-padding = ${spacing.pad-xs}
+format-margin  = ${spacing.mar-xs}
+
+[module/workspaces]
+type = internal/bspwm
+
+; focused workspace — primary pill
+label-focused = %name%
+label-focused-background = ${colors.surface-active}
+label-focused-foreground = ${colors.on-surface-dark}
+
+; occupied workspace — secondary pill
+label-occupied = %name%
+label-occupied-background = ${colors.surface-1}
+label-occupied-foreground = ${colors.on-surface-light}
+
+; empty workspace — de-emphasized
+label-empty = %name%
+label-empty-background = ${colors.surface-0}
+label-empty-foreground = ${colors.muted}
+
+label-focused-padding   = ${spacing.pad-sm}
+label-focused-margin    = ${spacing.mar-xs}
+
+label-occupied-padding  = ${spacing.pad-sm}
+label-occupied-margin   = ${spacing.mar-xs}
+
+label-empty-padding     = ${spacing.pad-sm}
+label-empty-margin      = ${spacing.mar-xs}
+
+
+[module/brightness]
+type = custom/script
+exec = brightnessctl get
+interval = 1
+
+label = 󰃠 %output%%
+
+; pill-style surface (non-active)
+format = <label>
+format-padding = 3
+format-margin = 1
+format-background = ${colors.surface-1}
+format-foreground = ${colors.on-surface-light}
+
+scroll-up = ~/.config/sxhkd/brightness-ctl.sh up
+scroll-down = ~/.config/sxhkd/brightness-ctl.sh down
+

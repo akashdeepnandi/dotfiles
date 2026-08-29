@@ -1,0 +1,7 @@
+# Load global theme variables for X session
+. "$HOME/.config/themer/colors.sh"
+
+# GNOME Keyring (auto-unlock via PAM)
+# eval "$(gnome-keyring-daemon --start --components=secrets,ssh,gpg)"
+# export SSH_AUTH_SOCK
+

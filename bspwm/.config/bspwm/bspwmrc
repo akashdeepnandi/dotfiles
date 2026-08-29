@@ -1,0 +1,103 @@
+#!/bin/sh
+
+# basic settings
+# enforce tiled layout by default
+# force tiled layout on all desktops on all monitors
+
+
+bspc config border_width 1
+bspc config window_gap 15
+bspc config split_ratio 0.52
+bspc config focus_follows_pointer true
+bspc config top_padding 15
+
+
+# sane defaults
+bspc config single_monocle true
+bspc config gapless_monocle false
+
+# floating rules
+bspc rule -a Ulauncher state=floating center=true
+bspc rule -a Pavucontrol state=floating
+bspc rule -a Blueman-manager state=floating
+bspc rule -a Gnome-calculator state=floating
+
+# monitor layout (arandr)
+/home/akash/.config/bspwm/monitors.sh &
+sleep 1
+
+# monitor detection & desktop assignment
+for m in $(bspc query -M); do
+	bspc monitor "$m" -d 1 2 3 4 5 6
+	for d in $(bspc query -D -m "$m"); do
+		bspc desktop "$d" -l tiled
+	done
+done
+# for m in $(bspc query -M); do
+# done
+
+# autostart core services
+pgrep -x sxhkd >/dev/null || sxhkd &
+pgrep -x nm-applet >/dev/null || nm-applet &
+pgrep -x blueman-applet >/dev/null || blueman-applet &
+pgrep -x picom >/dev/null || picom &
+pgrep -x qbittorrent >/dev/null || qbittorrent &
+pgrep -x bluemail > /dev/null || /opt/BlueMail/bluemail --no-sandbox %U &
+
+# Idle lock + DPMS
+
+pgrep -x xss-lock >/dev/null || \
+xss-lock --transfer-sleep-lock -- i3lock -c 1e1e2e &
+
+pgrep -x xidlehook >/dev/null || \
+xidlehook \
+  --not-when-fullscreen \
+  --not-when-audio \
+  --timer 1800 'i3lock -c 1e1e2e' '' \
+  --timer 3600 'systemctl suspend' '' &
+
+
+
+
+# DPMS timings (seconds)
+# Setting Idle Timeout
+# xset s 600
+# Setting standby, suspend, off timeouts for screen
+# xset dpms 660 660 720
+
+
+
+# polybar on all monitors (idempotent, with theming)
+. ~/.config/themer/colors.sh
+
+PRIMARY=$(xrandr --query | grep " primary" | cut -d" " -f1)
+for m in $(polybar --list-monitors | cut -d: -f1); do
+  pgrep -f "polybar.*$m.*main" >/dev/null && continue
+
+  if [ "$m" = "$PRIMARY" ]; then
+    TRAY=center
+  else
+    TRAY=none
+  fi
+
+  MONITOR="$m" TRAY="$TRAY" polybar main &
+done
+
+for m in $(polybar --list-monitors | cut -d: -f1); do
+  pgrep -f "polybar.*$m.*main" >/dev/null || \
+  MONITOR="$m" \
+  polybar main &
+done
+
+# wallpaper
+feh --bg-scale "$HOME/.config/bspwm/terrain.jpg" &
+
+# cursor + X defaults
+xsetroot -cursor_name left_ptr
+
+# rofi colors
+"$HOME/.config/rofi/rofi-color-generator.sh"
+
+# Touchpad setup
+TP=$(xinput list | grep -i touchpad | awk -F'id=' '{print $2}' | cut -f1)
+xinput set-prop "$TP" "libinput Tapping Enabled" 1

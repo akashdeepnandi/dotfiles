@@ -37,7 +37,7 @@ program = "/usr/bin/zsh"
 dynamic_padding = true
 # dynamic_title = false
 # title = "Alacritty"
-# opacity = 0.9
+opacity = 0.95
 
 [window.dimensions]
 columns = 160
